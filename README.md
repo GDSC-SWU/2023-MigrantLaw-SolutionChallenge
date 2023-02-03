@@ -1,16 +1,8 @@
 # migrant_law_solutionchallenge
 
-A new Flutter project.
+안녕하세요? ✨
 
-## Getting Started
+이주 노동자를 위한 법률안내 서비스입니다.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+📢 임금체불이나 퇴직금 미정산, 산업재해 등 악덕 사장으로부터 고통받고 있는 이주노동자들이 
+정당한 권리를 되찾기 위해서 법적 조치를 취할 수 있도록 한국 법 해석 및 안내를 하고자 합니다.
