@@ -83,7 +83,7 @@ class _Body extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (BuildContext context) {
-                  return HomeDetailPage();
+                  return HomeDetailPage(whatPage: index,);
                 }));
               },
               child: Container(

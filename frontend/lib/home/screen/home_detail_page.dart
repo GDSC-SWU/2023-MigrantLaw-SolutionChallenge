@@ -2,22 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 const List<Tab> tabs = <Tab>[
-  Tab(text: '근로'),
-  Tab(text: '고용 보험'),
-  Tab(text: '산재'),
-  Tab(text: '퇴직금'),
-  Tab(text: '폭력'),
-  Tab(text: '임금 채권'),
+  Tab(text: '근로기준법'),
+  Tab(text: '고용보험법'),
+  Tab(text: '산재보험'),
+  Tab(text: '퇴직급여법'),
+  Tab(text: '남녀고용평등법'),
+  Tab(text: '임금채권보장법'),
 ];
 
 class HomeDetailPage extends StatefulWidget {
-  const HomeDetailPage({Key? key}) : super(key: key);
+  final int whatPage;
+
+  const HomeDetailPage({
+    Key? key,
+    required this.whatPage,
+  }) : super(key: key);
 
   @override
   State<HomeDetailPage> createState() => _HomeDetailPageState();
 }
 
 class _HomeDetailPageState extends State<HomeDetailPage> {
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -30,58 +36,67 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
             // To get index of current tab use tabController.index
           }
         });
-        return Scaffold(
-          appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: PRIMARY_COLOR,
-            actions: [
-              IconButton(
-                onPressed: () {
-
-                },
-                icon: Icon(Icons.search),
-              )
-            ],
-            bottom: const TabBar(
-              indicatorColor: BODY_TEXT_COLOR,
-              isScrollable: true,
-              tabs: tabs,
+        return DefaultTabController(
+          length: tabs.length,
+          initialIndex: widget.whatPage,
+          child: Scaffold(
+            appBar: AppBar(
+              centerTitle: true,
+              backgroundColor: PRIMARY_COLOR,
+              actions: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.search),
+                )
+              ],
+              bottom: const TabBar(
+                indicatorColor: BODY_TEXT_COLOR,
+                labelColor: BODY_TEXT_COLOR,
+                labelStyle: TextStyle(
+                    fontFamily: "NotoSans",
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+                isScrollable: true,
+                tabs: tabs,
+              ),
             ),
-          ),
-          body: TabBarView(
-            children: tabs.map((Tab tab) {
-              return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ListView.builder(
-                    itemCount: tabs.length,
-                    itemBuilder: (context, position) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 6.0),
-                        child: InkWell(
-                          onTap: () {
-                            print(position);
-                          },
-                          child: Container(
-                            height: 80,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Card(
-                              margin: EdgeInsets.all(1),
-                              elevation: 0.5,
-                              child: Text(
-                                "$position",
-                                style: TextStyle(
-                                    fontFamily: "NotoSans",
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400),
+            body: TabBarView(
+              children: tabs.map((Tab tab) {
+                return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ListView.builder(
+                      itemCount: tabs.length,
+                      itemBuilder: (context, position) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 6.0),
+                          child: InkWell(
+                            onTap: () {
+                              // 어떤 카드인지 식별 인덱스
+                              print(position);
+                            },
+                            child: Container(
+                              height: 80,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: Card(
+                                margin: EdgeInsets.all(1),
+                                elevation: 0.5,
+                                child: Text(
+                                  "$position",
+                                  style: TextStyle(
+                                      color: BODY_TEXT_COLOR2,
+                                      fontFamily: "NotoSans",
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  ));
-            }).toList(),
+                        );
+                      },
+                    ));
+              }).toList(),
+            ),
           ),
         );
       }),
