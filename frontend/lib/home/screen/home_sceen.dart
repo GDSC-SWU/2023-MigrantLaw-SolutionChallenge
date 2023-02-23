@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:migrant_law_solutionchallenge/home/screen/home_detail_page.dart';
 import '../../const/color.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -60,7 +61,7 @@ class _Body extends StatelessWidget {
     '고용보험법',
     '산재보험',
     '퇴직급여법',
-    '남여고용평등법',
+    '남고용평등법',
     '임금채권보장법',
   ];
 
@@ -80,7 +81,10 @@ class _Body extends StatelessWidget {
             ),
             child: InkWell(
               onTap: () {
-                print(index);
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (BuildContext context) {
+                  return HomeDetailPage();
+                }));
               },
               child: Container(
                 alignment: Alignment.center,

@@ -46,7 +46,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
       currentIndex: currentIndex,
       items: const [
         BottomNavigationBarItem(
-          label: "Home",
+          label: "홈",
           icon: Icon(Icons.home),
         ),
         BottomNavigationBarItem(
