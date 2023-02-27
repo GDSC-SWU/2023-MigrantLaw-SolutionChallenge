@@ -10,11 +10,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           IconButton(
-              onPressed: () {
-              },
-              icon: const Icon(Icons.language)),
+            onPressed: () {
+              print("language icon clicked");
+            },
+            icon: const Icon(Icons.language),
+          ),
         ],
         elevation: 0,
         centerTitle: false,
@@ -30,16 +31,47 @@ class HomeScreen extends StatelessWidget {
           child: const Text(
             "Law4You",
             style: TextStyle(
-              fontSize: 28.0,
-              fontWeight: FontWeight.w700,
+              fontSize: 20.0,
+              fontWeight: FontWeight.w800,
             ),
           ),
         ),
       ),
       backgroundColor: BODY_TEXT_COLOR,
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 70.0),
-        child: _Body(),
+        padding: const EdgeInsets.symmetric(horizontal: 27.0, vertical: 60.0),
+        child: Column(
+          children: [
+            _Head(),
+            SizedBox(height: 20.0),
+            _Body(),
+            SizedBox(height: 20.0),
+            _Bottom(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Head extends StatelessWidget {
+  const _Head({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            "Hello\nmy neighbor",
+            style: TextStyle(
+              color: PRIMARY_COLOR,
+              fontSize: 40.0,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -51,8 +83,8 @@ class _Body extends StatelessWidget {
   @override
   // 텍스트 스타일
   final textStyle = TextStyle(
-    color: BODY_TEXT_COLOR,
-    fontSize: 18.0,
+    color: PRIMARY_COLOR,
+    fontSize: 13.0,
     fontWeight: FontWeight.w500,
   );
 
@@ -65,45 +97,90 @@ class _Body extends StatelessWidget {
     '임금채권보장법',
   ];
 
+  final imgList = <String> [
+    'labor_standards.png',
+    'employment_insurance.png',
+    'safety_insurance.png',
+    'retirement.png',
+    'equality.png',
+    'wage_claim.png',
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      physics: const NeverScrollableScrollPhysics(),
-      crossAxisCount: 2,
-      children: List.generate(
-        6,
-            (index) {
-          return Card(
-            shape: RoundedRectangleBorder(
-              side: BorderSide(
-                color: Theme.of(context).colorScheme.outline,
-              ),
-              borderRadius: const BorderRadius.all(Radius.circular(12)),
-            ),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (BuildContext context) {
-                  return HomeDetailPage(whatPage: index,);
-                }));
-              },
-              child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: PRIMARY_COLOR,
-                  borderRadius: BorderRadius.circular(10.0),
+    return Container(
+      color: BODY_TEXT_COLOR,
+      child: GridView.count(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        crossAxisCount: 3,
+        children: List.generate(
+          6,
+          (index) {
+            return Card(
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (BuildContext context) {
+                    return HomeDetailPage(
+                      whatPage: index,
+                    );
+                  }));
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  //width: MediaQuery.of(context).size.width,
+                  margin: EdgeInsets.all(5.0),
+                  width: 100.00,
+                  height: 100.00,
+                  child: Column(
+                    children: [
+                      Container(
+                        child: Image.asset(
+                          'assets/images/${imgList[index]}',
+                          height: 35.0,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      SizedBox(height: 10.0),
+                      Text(
+                        cardNameList[index],
+                        textAlign: TextAlign.center,
+                        style: textStyle,
+                      ),
+                    ],
+                  ),
                 ),
-                margin: EdgeInsets.all(5.0),
-                child: Text(
-                  cardNameList[index],
-                  textAlign: TextAlign.center,
-                  style: textStyle,
-                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
+    );
+  }
+}
+
+class _Bottom extends StatelessWidget {
+  const _Bottom({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              " 자주 찾아보는 법률 ",
+              style: TextStyle(
+                color: PRIMARY_COLOR,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

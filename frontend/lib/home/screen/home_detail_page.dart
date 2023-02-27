@@ -55,7 +55,8 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                 labelStyle: TextStyle(
                     fontFamily: "NotoSans",
                     fontSize: 16,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w500,
+                ),
                 isScrollable: true,
                 tabs: tabs,
               ),
@@ -87,7 +88,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                                       color: BODY_TEXT_COLOR2,
                                       fontFamily: "NotoSans",
                                       fontSize: 15,
-                                      fontWeight: FontWeight.w400),
+                                      fontWeight: FontWeight.w400,),
                                 ),
                               ),
                             ),
