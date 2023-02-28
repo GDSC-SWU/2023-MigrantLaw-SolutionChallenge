@@ -49,8 +49,15 @@ class HomeScreen extends StatelessWidget {
           children: <Widget>[
             const _Head(),
             const SizedBox(height: 20.0),
-            const HomeSearchBar(),
-            _Body(),
+            Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 23),
+                  child: _Body(),
+                ),
+                const HomeSearchBar(),
+              ],
+            ),
             const SizedBox(height: 20.0),
             const _Bottom(),
           ],
@@ -66,7 +73,8 @@ class _Head extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 27.0),
+      padding: const EdgeInsets.only(
+          right: 27.0, left: 27.0, top: 24.0, bottom: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: const [
@@ -81,6 +89,15 @@ class _Head extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class BlankContainer extends StatelessWidget {
+  const BlankContainer({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
 
@@ -115,52 +132,57 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      decoration: const BoxDecoration(
         color: SECONDARY_COLOR4,
       ),
-      child: GridView.count(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        crossAxisCount: 3,
-        children: List.generate(
-          6,
-          (index) {
-            return Card(
-              color: SECONDARY_COLOR4,
-              elevation: 0,
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (BuildContext context) {
-                    return HomeDetailPage(
-                      whatPage: index,
-                    );
-                  }));
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  width: MediaQuery.of(context).size.width,
-                  height: 100.00,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/${imgList[index]}',
-                        height: 35.0,
-                        fit: BoxFit.cover,
-                      ),
-                      const SizedBox(height: 6.0),
-                      Text(
-                        cardNameList[index],
-                        textAlign: TextAlign.center,
-                        style: textStyle,
-                      ),
-                    ],
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10.0, bottom: 6.0),
+        child: GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisCount: 3,
+          children: List.generate(
+            6,
+            (index) {
+              return Card(
+                color: SECONDARY_COLOR4,
+                semanticContainer: true,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                elevation: 0,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (BuildContext context) {
+                      return HomeDetailPage(
+                        whatPage: index,
+                      );
+                    }));
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/${imgList[index]}',
+                          height: 35.0,
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(height: 6.0),
+                        Text(
+                          cardNameList[index],
+                          textAlign: TextAlign.center,
+                          style: textStyle,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );
@@ -173,62 +195,62 @@ class _Bottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 27.0),
-      child: Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
-              children: const [
-                Text(
-                  " 자주 찾아 보는 법률 ",
-                  style: TextStyle(
-                    color: PRIMARY_COLOR,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w800,
+      padding: const EdgeInsets.only(left: 27.0, top: 7.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: const [
+              Text(
+                " 자주 찾아 보는 법률 ",
+                style: TextStyle(
+                  color: PRIMARY_COLOR,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14.0),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                Card(
+                  color: Colors.white24,
+                  clipBehavior: Clip.hardEdge,
+                  child: InkWell(
+                    splashColor: Colors.blue.withAlpha(30),
+                    onTap: () {
+                      debugPrint('Card1 tapped.');
+                    },
+                    child: const SizedBox(
+                      width: 196,
+                      height: 128,
+                      child: Text(''),
+                    ),
+                  ),
+                ),
+                Card(
+                  color: Colors.white24,
+                  clipBehavior: Clip.hardEdge,
+                  child: InkWell(
+                    splashColor: Colors.blue.withAlpha(30),
+                    onTap: () {
+                      debugPrint('Card2 tapped.');
+                    },
+                    child: const SizedBox(
+                      width: 196,
+                      height: 128,
+                      child: Text(""),
+                    ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 12.0),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Card(
-                    clipBehavior: Clip.hardEdge,
-                    child: InkWell(
-                      splashColor: Colors.blue.withAlpha(30),
-                      onTap: () {
-                        debugPrint('Card1 tapped.');
-                      },
-                      child: const SizedBox(
-                        width: 196,
-                        height: 128,
-                        child: Text(''),
-                      ),
-                    ),
-                  ),
-                  Card(
-                    clipBehavior: Clip.hardEdge,
-                    child: InkWell(
-                      splashColor: Colors.blue.withAlpha(30),
-                      onTap: () {
-                        debugPrint('Card2 tapped.');
-                      },
-                      child: const SizedBox(
-                        width: 196,
-                        height: 128,
-                        child: Text(""),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
