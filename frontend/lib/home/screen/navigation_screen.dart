@@ -17,9 +17,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
 
   // 네비게이션 탭 화면
   final List<Widget> _widgetOptions = <Widget>[
-    DownloadFileScreen(),
-    HomeScreen(),
-    ContractSceen(),
+    const DownloadFileScreen(),
+    const HomeScreen(),
+    const ContractSceen(),
   ];
 
   @override
@@ -29,11 +29,11 @@ class _NavigationScreenState extends State<NavigationScreen> {
       body: SafeArea(
         child: _widgetOptions.elementAt(currentIndex),
       ),
-      bottomNavigationBar: _BottomNavigation(),
+      bottomNavigationBar: _bottomNavigation(),
     );
   }
 
-  Widget _BottomNavigation() {
+  Widget _bottomNavigation() {
     return BottomNavigationBar(
       backgroundColor: PRIMARY_COLOR,
       unselectedItemColor: Colors.white60,
@@ -42,7 +42,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
       unselectedFontSize: 14,
       onTap: (int index) {
         setState(() {
-          this.currentIndex = index;
+          currentIndex = index;
         });
       },
       currentIndex: currentIndex,

@@ -59,7 +59,12 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/images/
+    - assets/images/employment_insurance.png
+    - assets/images/equality.png
+    - assets/images/labor_standards.png
+    - assets/images/retirement.png
+    - assets/images/safety_insurance.png
+    - assets/images/wage_claim.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
