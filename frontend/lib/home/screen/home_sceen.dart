@@ -1,52 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:migrant_law_solutionchallenge/home/screen/home_detail_page.dart';
 import '../../const/color.dart';
+import '../widget/home_searchbar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              print("language icon clicked");
-            },
-            icon: const Icon(Icons.language),
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () {
+                print("language icon clicked");
+              },
+              icon: const Icon(Icons.language),
+            ),
+          ],
+          elevation: 0,
+          centerTitle: false,
+          titleTextStyle: const TextStyle(
+            fontSize: 23,
+            fontWeight: FontWeight.w700,
+            color: PRIMARY_COLOR,
           ),
-        ],
-        elevation: 0,
-        centerTitle: false,
-        titleTextStyle: TextStyle(
-          fontSize: 23,
-          fontWeight: FontWeight.w700,
-          color: PRIMARY_COLOR,
-        ),
-        foregroundColor: PRIMARY_COLOR,
-        backgroundColor: BODY_TEXT_COLOR,
-        title: Padding(
-          padding: const EdgeInsets.only(left: 30.0),
-          child: const Text(
-            "Law4You",
-            style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: FontWeight.w800,
+          foregroundColor: PRIMARY_COLOR,
+          backgroundColor: BODY_TEXT_COLOR,
+          title: const Padding(
+            padding: EdgeInsets.only(left: 5.0),
+            child: Text(
+              "Law4you",
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
         ),
-      ),
-      backgroundColor: BODY_TEXT_COLOR,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 27.0, vertical: 60.0),
-        child: Column(
-          children: [
-            _Head(),
-            SizedBox(height: 20.0),
+        backgroundColor: BODY_TEXT_COLOR,
+        body: ListView(
+          padding: const EdgeInsets.symmetric(vertical: 40.0),
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          children: <Widget>[
+            const _Head(),
+            const SizedBox(height: 20.0),
+            const HomeSearchBar(),
             _Body(),
-            SizedBox(height: 20.0),
-            _Bottom(),
+            const SizedBox(height: 20.0),
+            const _Bottom(),
           ],
         ),
       ),
@@ -59,10 +65,11 @@ class _Head extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 27.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: [
+        children: const [
           Text(
             "Hello\nmy neighbor",
             style: TextStyle(
@@ -80,12 +87,11 @@ class _Head extends StatelessWidget {
 class _Body extends StatelessWidget {
   _Body({Key? key}) : super(key: key);
 
-  @override
   // 텍스트 스타일
-  final textStyle = TextStyle(
-    color: PRIMARY_COLOR,
-    fontSize: 13.0,
-    fontWeight: FontWeight.w500,
+  final textStyle = const TextStyle(
+    color: Colors.black87,
+    fontSize: 12.0,
+    fontWeight: FontWeight.w700,
   );
 
   final cardNameList = <String>[
@@ -93,23 +99,25 @@ class _Body extends StatelessWidget {
     '고용보험법',
     '산재보험',
     '퇴직급여법',
-    '남고용평등법',
-    '임금채권보장법',
+    '임금채권\n보장법',
+    '남녀고용평등과\n일·가정 양입 지원',
   ];
 
-  final imgList = <String> [
+  final imgList = <String>[
     'labor_standards.png',
     'employment_insurance.png',
     'safety_insurance.png',
     'retirement.png',
-    'equality.png',
     'wage_claim.png',
+    'equality.png',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: BODY_TEXT_COLOR,
+      decoration: BoxDecoration(
+        color: SECONDARY_COLOR4,
+      ),
       child: GridView.count(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -118,6 +126,8 @@ class _Body extends StatelessWidget {
           6,
           (index) {
             return Card(
+              color: SECONDARY_COLOR4,
+              elevation: 0,
               child: InkWell(
                 onTap: () {
                   Navigator.of(context)
@@ -129,20 +139,17 @@ class _Body extends StatelessWidget {
                 },
                 child: Container(
                   alignment: Alignment.center,
-                  //width: MediaQuery.of(context).size.width,
-                  margin: EdgeInsets.all(5.0),
-                  width: 100.00,
+                  width: MediaQuery.of(context).size.width,
                   height: 100.00,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
-                        child: Image.asset(
-                          'assets/images/${imgList[index]}',
-                          height: 35.0,
-                          fit: BoxFit.fill,
-                        ),
+                      Image.asset(
+                        'assets/images/${imgList[index]}',
+                        height: 35.0,
+                        fit: BoxFit.cover,
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 6.0),
                       Text(
                         cardNameList[index],
                         textAlign: TextAlign.center,
@@ -165,22 +172,64 @@ class _Bottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 27.0),
+      child: Expanded(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              " 자주 찾아보는 법률 ",
-              style: TextStyle(
-                color: PRIMARY_COLOR,
-                fontSize: 16.0,
-                fontWeight: FontWeight.w600,
-              ),
+            Row(
+              children: const [
+                Text(
+                  " 자주 찾아 보는 법률 ",
+                  style: TextStyle(
+                    color: PRIMARY_COLOR,
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ],
             ),
+            const SizedBox(height: 12.0),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Card(
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      splashColor: Colors.blue.withAlpha(30),
+                      onTap: () {
+                        debugPrint('Card1 tapped.');
+                      },
+                      child: const SizedBox(
+                        width: 196,
+                        height: 128,
+                        child: Text(''),
+                      ),
+                    ),
+                  ),
+                  Card(
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      splashColor: Colors.blue.withAlpha(30),
+                      onTap: () {
+                        debugPrint('Card2 tapped.');
+                      },
+                      child: const SizedBox(
+                        width: 196,
+                        height: 128,
+                        child: Text(""),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
-        )
-      ],
+        ),
+      ),
     );
   }
 }

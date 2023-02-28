@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 const List<Tab> tabs = <Tab>[
@@ -6,8 +7,8 @@ const List<Tab> tabs = <Tab>[
   Tab(text: '고용보험법'),
   Tab(text: '산재보험'),
   Tab(text: '퇴직급여법'),
-  Tab(text: '남녀고용평등법'),
   Tab(text: '임금채권보장법'),
+  Tab(text: '남녀고용평등'),
 ];
 
 class HomeDetailPage extends StatefulWidget {
@@ -26,6 +27,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return DefaultTabController(
       length: tabs.length,
       child: Builder(builder: (BuildContext context) {

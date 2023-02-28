@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		CHeHSrqjaPonnKq28qJZ3NAyYKA=
+		O91wpj7uJwzNBTsnWcUktz3lYWE=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -44,6 +44,30 @@
 		<data>
 		J0u736BwzA7B6kBPEQZB71emxiM=
 		</data>
+		<key>flutter_assets/assets/images/employment_insurance.png</key>
+		<data>
+		LgufnsrWfjxSZpT9NHFXXfBnIYs=
+		</data>
+		<key>flutter_assets/assets/images/equality.png</key>
+		<data>
+		i7m3Z2GIoZqa9IBPi7bcQ+7FX34=
+		</data>
+		<key>flutter_assets/assets/images/labor_standards.png</key>
+		<data>
+		HayUJrACfpL8YBV7CmiKTqqsGSM=
+		</data>
+		<key>flutter_assets/assets/images/retirement.png</key>
+		<data>
+		+E7HFC/F+B01bllSscd713WHf1Q=
+		</data>
+		<key>flutter_assets/assets/images/safety_insurance.png</key>
+		<data>
+		ni2PAc9WMbvV4BoYCdw7qbztbUo=
+		</data>
+		<key>flutter_assets/assets/images/wage_claim.png</key>
+		<data>
+		aBlKSDE1HIvKezb398KRX1hlrDg=
+		</data>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
 		/CUoTuPQqqdexfyOT9lpJhV+2MQ=
@@ -54,7 +78,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		3NsghBfQP6GBXCr2jnabDTlYwXw=
+		ULwBtZKJj8tY8L8dwaDUEb7C3Fs=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -75,7 +99,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			c5NLhuzz6y2awvxEOnDynIuMog5dIHXpXWMYkGBpvLM=
+			upzfMjZr84d0zrKqVFyGpKFO5qf3KnpYTCOadDu3160=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -134,6 +158,48 @@
 			BFuAJqCkI+/FyF5txWubJwXzTrvEPotdBmTdHIYUz5A=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/employment_insurance.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			b3/JYWGuvaiastEJKtmSNEQLy4wol0A0pnFElTM0zEM=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/equality.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yvahl2a2f361ikCz8YQWfvn5N0Ftys0c0xC+trxdll8=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/labor_standards.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Rg6GbxLAk261cZpX8KHtkyUkf8gZoMlbQL8ZRGMNN3k=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/retirement.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9Qgko5Wj7OA/HB11xl7pAEco+IL3DBUDI6gwPAHqu2Y=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/safety_insurance.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jWbCk+w2ct/+D0gPeySJChl4SwSaWDzIrRzxmp46FGs=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/wage_claim.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZsOIdNcKtblubSXYh4XEecxgfyYDzULZeGBUfKLZLwg=
+			</data>
+		</dict>
 		<key>flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<dict>
 			<key>hash2</key>
@@ -152,7 +218,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Zlrw7v0ko4g7Y9NBoOybg9cSkJg4JdKjgwd1uA38afQ=
+			cyXOHOW608STEF3drwcOqQfq9fA9wSjz3Y4g9pLUdq8=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
