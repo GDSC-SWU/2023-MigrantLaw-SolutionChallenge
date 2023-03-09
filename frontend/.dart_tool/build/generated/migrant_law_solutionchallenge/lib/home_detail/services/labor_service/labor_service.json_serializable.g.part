@@ -1,0 +1,17 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+LaborServices _$LaborServicesFromJson(Map<String, dynamic> json) =>
+    LaborServices(
+      json['law_title'] as String,
+      json['date'] as String,
+      Provision.fromJson(json['provision'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$LaborServicesToJson(LaborServices instance) =>
+    <String, dynamic>{
+      'law_title': instance.law_title,
+      'date': instance.date,
+      'provision': instance.provision,
+    };

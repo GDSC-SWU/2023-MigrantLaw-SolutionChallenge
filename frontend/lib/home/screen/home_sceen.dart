@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:migrant_law_solutionchallenge/home/screen/home_detail_page.dart';
+import 'package:migrant_law_solutionchallenge/home_detail/screen/search_detail_page.dart';
 import '../../const/color.dart';
 import '../widget/home_searchbar.dart';
 
@@ -127,6 +127,10 @@ class _Body extends StatelessWidget {
     'retirement.png',
     'wage_claim.png',
     'equality.png',
+  ];
+
+  final navigationList = <Widget> [
+
   ];
 
   @override

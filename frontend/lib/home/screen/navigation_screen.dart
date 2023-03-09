@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:migrant_law_solutionchallenge/home_detail/screen/labor_detail_screen.dart';
 import '../../const/color.dart';
 import '../../contract/screen/contract_screen.dart';
 import '../../download_file/screen/download_file.dart';
-import 'home_sceen.dart';
 
 // 네비게이션으로 화면 이동
 class NavigationScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   // 네비게이션 탭 화면
   final List<Widget> _widgetOptions = <Widget>[
     const DownloadFileScreen(),
-    const HomeScreen(),
+    const LaborDetailScreen(),
     const ContractSceen(),
   ];
 

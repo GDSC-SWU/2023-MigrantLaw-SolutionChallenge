@@ -1,0 +1,15 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Provision _$ProvisionFromJson(Map<String, dynamic> json) => Provision(
+      json['context'] as String,
+      json['date'] as String,
+      Term.fromJson(json['term'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$ProvisionToJson(Provision instance) => <String, dynamic>{
+      'context': instance.context,
+      'date': instance.date,
+      'term': instance.term,
+    };

@@ -1,0 +1,15 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Term _$TermFromJson(Map<String, dynamic> json) => Term(
+      json['term_number'] as String,
+      json['term_context'] as String,
+      Issue.fromJson(json['issue'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$TermToJson(Term instance) => <String, dynamic>{
+      'term_number': instance.term_number,
+      'term_context': instance.term_context,
+      'issue': instance.issue,
+    };
