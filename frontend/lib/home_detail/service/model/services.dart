@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-// Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
-
-// String welcomeToJson(Welcome data) => json.encode(data.toJson());
+Services servicesFromJson(String str) => Services.fromJson(json.decode(str));
+String servicesToJson(Services data) => json.encode(data.toJson());
 
 class Services {
   Services({
@@ -18,6 +17,9 @@ class Services {
   Map<String, dynamic> toJson() => {
     "법령": empty.toJson(),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Empty {
@@ -38,6 +40,9 @@ class Empty {
     "기본정보": purple.toJson(),
     "조문": indigo.toJson(),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Class {
@@ -54,6 +59,9 @@ class Class {
   Map<String, dynamic> toJson() => {
     "개정문내용": empty.toJson(),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Purple {
@@ -70,6 +78,9 @@ class Purple {
   Map<String, dynamic> toJson() => {
     "_cdata": List<dynamic>.from(cdata.map((x) => x)),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class PdFClass {
@@ -86,6 +97,9 @@ class PdFClass {
   Map<String, dynamic> toJson() => {
     "_text": text,
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Value {
@@ -102,6 +116,9 @@ class Value {
   Map<String, dynamic> toJson() => {
     "_cdata": cdata,
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Ambitious {
@@ -118,6 +135,9 @@ class Ambitious {
   Map<String, dynamic> toJson() => {
     "조문단위": List<dynamic>.from(empty.map((x) => x.toJson())),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Cunning {
@@ -178,6 +198,9 @@ class Cunning {
     "조문참고자료": cunning?.toJson(),
     "조문가지번호": empty?.toJson(),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class PurpleAttributes {
@@ -194,6 +217,9 @@ class PurpleAttributes {
   Map<String, dynamic> toJson() => {
     "조문키": empty,
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Magenta {
@@ -226,6 +252,9 @@ class Magenta {
     "항제개정유형": fluffy?.toJson(),
     "항제개정일자문자열": tentacled?.toJson(),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Frisky {
@@ -242,6 +271,9 @@ class Frisky {
   Map<String, dynamic> toJson() => {
     "_cdata": cdata,
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Mischievous {
@@ -258,6 +290,9 @@ class Mischievous {
   Map<String, dynamic> toJson() => {
     "호": List<dynamic>.from(empty.map((x) => Map.from(x).map((k, v) => MapEntry<String, dynamic>(k, v.toJson())))),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Fluffy {
@@ -298,6 +333,9 @@ class Fluffy {
     "공포법령여부": empty.toJson(),
     "연락부서": indigo.toJson(),
   };
+
+  @override
+  String toString() => toJson().toString();
 }
 
 class Tentacled {
@@ -308,4 +346,7 @@ class Tentacled {
 
   Map<String, dynamic> toJson() => {
   };
+
+  @override
+  String toString() => toJson().toString();
 }
