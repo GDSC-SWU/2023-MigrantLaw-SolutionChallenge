@@ -69,6 +69,7 @@ class Empty {
     required this.fluffy,
     required this.empty,
     required this.sticky,
+    required this.hang,
   });
 
   Attributes attributes;
@@ -78,6 +79,7 @@ class Empty {
   Hilarious fluffy;
   Class empty;
   Frisky sticky;
+  Hang hang;
 
   factory Empty.fromJson(Map<String, dynamic> json) => Empty(
     attributes: Attributes.fromJson(json["_attributes"]),
@@ -87,6 +89,7 @@ class Empty {
     fluffy: Hilarious.fromJson(json["별표"]),
     empty: Class.fromJson(json["개정문"]),
     sticky: Frisky.fromJson(json["제개정이유"]),
+    hang: Hang.fromJson(json["조문"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -97,6 +100,7 @@ class Empty {
     "별표": fluffy.toJson(),
     "개정문": empty.toJson(),
     "제개정이유": sticky.toJson(),
+    "조문": hang.toJson(),
   };
 }
 
@@ -284,6 +288,22 @@ class Mischievous {
   };
 }
 
+class Hang {
+  Hang({
+    required this.empty,
+  });
+
+  List<The1> empty;
+
+  factory Hang.fromJson(Map<String, dynamic> json) => Hang(
+    empty: List<The1>.from(json["조문단위"].map((x) => The1.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "조문단위": List<dynamic>.from(empty.map((x) => x.toJson())),
+  };
+}
+
 class Braggadocious {
   Braggadocious({
     required this.attributes,
@@ -362,30 +382,30 @@ class IndigoAttributes {
 
 class The1 {
   The1({
-    required this.purple,
-    required this.empty,
+    this.purple,
+    this.empty,
     this.sticky,
     this.fluffy,
     this.tentacled,
   });
 
-  Value purple;
-  The2 empty;
+  Value? purple;
+  Value? empty;
   List<Map<String, Value>>? sticky;
   IdClass? fluffy;
   IdClass? tentacled;
 
   factory The1.fromJson(Map<String, dynamic> json) => The1(
-    purple: Value.fromJson(json["항번호"]),
-    empty: The2.fromJson(json["항내용"]),
+    purple: json["항번호"] == null ? null : Value.fromJson(json["항번호"]),
+    empty: json["항내용"] == null ? null : Value.fromJson(json["항내용"]),
     sticky: json["호"] == null ? [] : List<Map<String, Value>>.from(json["호"]!.map((x) => Map.from(x).map((k, v) => MapEntry<String, Value>(k, Value.fromJson(v))))),
     fluffy: json["항제개정유형"] == null ? null : IdClass.fromJson(json["항제개정유형"]),
     tentacled: json["항제개정일자문자열"] == null ? null : IdClass.fromJson(json["항제개정일자문자열"]),
   );
 
   Map<String, dynamic> toJson() => {
-    "항번호": purple.toJson(),
-    "항내용": empty.toJson(),
+    "항번호": purple?.toJson(),
+    "항내용": empty?.toJson(),
     "호": sticky == null ? [] : List<dynamic>.from(sticky!.map((x) => Map.from(x).map((k, v) => MapEntry<String, dynamic>(k, v.toJson())))),
     "항제개정유형": fluffy?.toJson(),
     "항제개정일자문자열": tentacled?.toJson(),

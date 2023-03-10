@@ -28,6 +28,11 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
   late Future<Services> services;
   late Future<The1> the1Services;
 
+  bool _showBackToTopButton = false;
+
+  // scroll controller
+  late ScrollController _scrollController;
+
   Future<Services> fetchData() async {
     final response = await http.get(url);
 
@@ -43,6 +48,29 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
     super.initState();
     fetchData();
     services = fetchData();
+
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          if (_scrollController.offset >= 1000) {
+            _showBackToTopButton = true; // show the back-to-top button
+          } else {
+            _showBackToTopButton = false; // hide the back-to-top button
+          }
+        });
+      });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose(); // dispose the controller
+    super.dispose();
+  }
+
+  // This function is triggered when the user presses the back-to-top button
+  void _scrollToTop() {
+    _scrollController.animateTo(0,
+        duration: const Duration(seconds: 3), curve: Curves.linear);
   }
 
   @override
@@ -68,7 +96,7 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(
-            top: 10.0, left: 15.0, right: 15.0, bottom: 0),
+            top: 15.0, left: 15.0, right: 15.0, bottom: 0.0),
         child: FutureBuilder<Services>(
           future: services,
           builder: (context, snapshot) {
@@ -84,91 +112,142 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
             }
             return Scrollbar(
               child: SingleChildScrollView(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Column(
-                    children: [
-                      Text(
-                        snapshot.data!.empty.purple.tentacled.cdata,
-                        style: subTextStyle,
-                      ),
-                      const SizedBox(height: 3.0),
-                      Text(
-                        "시행일자 : ${snapshot.data!.empty.purple.cunning.text}",
-                        style: subTextStyle.copyWith(
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w700,
+                controller: _scrollController,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          snapshot.data!.empty.purple.tentacled.cdata,
+                          style: subTextStyle,
                         ),
-                      ),
-                      const SizedBox(height: 20.0),
-                      ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: snapshot.data!.empty.indigo.empty.length,
-                        itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              const SizedBox(height: 20.0),
-                              // const SizedBox(height: 10.0),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  if (snapshot.data?.empty.indigo.empty[index]
-                                          .ambitious?.cdata ==
-                                      null) ...[
-                                    Text(
-                                        snapshot.data!.empty.indigo.empty[index]
-                                            .purple.cdata,
-                                        style: mainTextStyle.copyWith(
-                                            fontSize: 19.0)),
-                                  ] else ...[
-                                    Text(
-                                      "제${snapshot.data?.empty.indigo.empty[index].fluffy.text}장(${snapshot.data?.empty.indigo.empty[index].ambitious?.cdata})",
-                                      style: subTextStyle.copyWith(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16.0,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 2.0),
-                                    Text(
-                                      snapshot.data!.empty.indigo.empty[index]
-                                          .purple.cdata,
-                                      style: const TextStyle(
-                                        color:
-                                            CupertinoColors.darkBackgroundGray,
-                                        fontSize: 14.0,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 2.0),
-
-                                    const SizedBox(height: 2.0),
-                                    if (snapshot.data!.empty.indigo.empty[index]
-                                            .cunning?.cdata !=
+                        const SizedBox(height: 3.0),
+                        Text(
+                          "시행일자 : ${snapshot.data!.empty.purple.cunning.text}",
+                          style: subTextStyle.copyWith(
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 20.0),
+                        ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: snapshot.data!.empty.indigo.empty.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                const SizedBox(height: 25.0),
+                                // const SizedBox(height: 10.0),
+                                Column(
+                                  crossAxisAlignment:
+                                  CrossAxisAlignment.stretch,
+                                  children: [
+                                    if (snapshot.data?.empty.indigo.empty[index]
+                                        .ambitious?.cdata ==
                                         null) ...[
-                                      Text(
-                                        "조문 참고 자료 : ${snapshot.data!.empty.indigo.empty[index].cunning?.cdata}",
-                                        style: const TextStyle(
-                                          color: CupertinoColors
-                                              .darkBackgroundGray,
-                                          fontSize: 14.0,
-                                        ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 50.0),
+                                        child: Text(
+                                            snapshot.data!.empty.indigo
+                                                .empty[index].purple.cdata,
+                                            style: mainTextStyle.copyWith(
+                                                fontSize: 19.0)),
                                       ),
-                                    ]
+                                    ] else
+                                      ...[
+                                        Text(
+                                          "제${snapshot.data?.empty.indigo
+                                              .empty[index].fluffy
+                                              .text}장(${snapshot.data?.empty
+                                              .indigo.empty[index].ambitious
+                                              ?.cdata})",
+                                          style: subTextStyle.copyWith(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16.0,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5.0),
+                                        Text(
+                                          snapshot.data!.empty.indigo
+                                              .empty[index]
+                                              .purple.cdata,
+                                          style: const TextStyle(
+                                            color: CupertinoColors
+                                                .darkBackgroundGray,
+                                            fontSize: 14.0,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5.0),
+                                        if (snapshot.data!.empty.hang
+                                            ?.empty[index].empty?.cdata !=
+                                            null) ...[
+                                          Text(
+                                            "항 : ${snapshot.data!.empty.hang
+                                                ?.empty[index].empty?.cdata}",
+                                            style: const TextStyle(
+                                              color: CupertinoColors
+                                                  .darkBackgroundGray,
+                                              fontSize: 14.0,
+                                            ),
+                                          ),
+                                          if (snapshot.data!.empty.hang
+                                              ?.empty[index].sticky !=
+                                              null) ...[
+                                            Text(
+                                              snapshot.data!.empty.hang
+                                                  ?.empty[index]
+                                                  .sticky as String,
+                                              style: const TextStyle(
+                                                color: CupertinoColors
+                                                    .darkBackgroundGray,
+                                                fontSize: 14.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ] else
+                                          ...[
+                                            Text("NULL")
+                                          ],
+                                        const SizedBox(height: 2.0),
+                                        if (snapshot.data!.empty.indigo
+                                            .empty[index].cunning?.cdata !=
+                                            null) ...[
+                                          Text(
+                                            "조문 참고 자료 : ${snapshot.data!.empty
+                                                .indigo.empty[index].cunning
+                                                ?.cdata}",
+                                            style: const TextStyle(
+                                              color: CupertinoColors
+                                                  .darkBackgroundGray,
+                                              fontSize: 14.0,
+                                            ),
+                                          ),
+                                        ]
+                                      ],
                                   ],
-                                ],
-                              )
-                            ],
-                          );
-                        },
-                        shrinkWrap: true,
-                      )
-                    ],
-                  ),
-                ],
-              )),
+                                )
+                              ],
+                            );
+                          },
+                          shrinkWrap: true,
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             );
           },
         ),
+      ),
+      floatingActionButton: _showBackToTopButton == false
+          ? null
+          : FloatingActionButton(
+        onPressed: _scrollToTop,
+        child: const Icon(Icons.arrow_upward, color: BODY_TEXT_COLOR),
+        backgroundColor: PRIMARY_COLOR.withOpacity(0.9),
       ),
     );
   }
