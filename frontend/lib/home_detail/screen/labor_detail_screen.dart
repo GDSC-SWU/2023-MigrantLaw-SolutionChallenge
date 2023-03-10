@@ -24,7 +24,9 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
 
   static String endPointUrl = API().getLaborUrl();
   final Uri url = Uri.parse(endPointUrl);
+
   late Future<Services> services;
+  late Future<The1> the1Services;
 
   Future<Services> fetchData() async {
     final response = await http.get(url);
@@ -88,51 +90,71 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
                   Column(
                     children: [
                       Text(
-                        snapshot.data!.empty.purple.purple.cdata,
+                        snapshot.data!.empty.purple.tentacled.cdata,
                         style: subTextStyle,
                       ),
                       const SizedBox(height: 3.0),
                       Text(
-                        "시행일자 : ${snapshot.data!.empty.purple.tentacled.text.toString()}",
+                        "시행일자 : ${snapshot.data!.empty.purple.cunning.text}",
                         style: subTextStyle.copyWith(
                           fontSize: 14.0,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      const SizedBox(height: 5.0),
+                      const SizedBox(height: 20.0),
                       ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: snapshot.data!.empty.indigo.empty.length,
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
-                              const SizedBox(height: 35.0),
-                              Text(
-                                  "제 2장 최저임금",
-                                  style: mainTextStyle.copyWith(fontSize: 19.0)),
-                              // if(snapshot.data?.empty.indigo.empty[index].fluffy.text == null ) {
-                              //
-                              // },
-                              const SizedBox(height: 25.0),
+                              const SizedBox(height: 20.0),
+                              // const SizedBox(height: 10.0),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  Text(
-                                    "제${snapshot.data?.empty.indigo.empty[index].fluffy.text}장(${snapshot.data?.empty.indigo.empty[index].ambitious?.cdata ?? ""})",
-                                    style: subTextStyle.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16.0,
+                                  if (snapshot.data?.empty.indigo.empty[index]
+                                          .ambitious?.cdata ==
+                                      null) ...[
+                                    Text(
+                                        snapshot.data!.empty.indigo.empty[index]
+                                            .purple.cdata,
+                                        style: mainTextStyle.copyWith(
+                                            fontSize: 19.0)),
+                                  ] else ...[
+                                    Text(
+                                      "제${snapshot.data?.empty.indigo.empty[index].fluffy.text}장(${snapshot.data?.empty.indigo.empty[index].ambitious?.cdata})",
+                                      style: subTextStyle.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16.0,
+                                      ),
                                     ),
-                                  ),
-                                  const SizedBox(height: 2.0),
-                                  Text(
-                                    "${snapshot.data!.empty.indigo.empty[index].purple.cdata}",
-                                    style: TextStyle(
-                                      color: CupertinoColors.darkBackgroundGray,
-                                      fontSize: 14.0,
+                                    const SizedBox(height: 2.0),
+                                    Text(
+                                      snapshot.data!.empty.indigo.empty[index]
+                                          .purple.cdata,
+                                      style: const TextStyle(
+                                        color:
+                                            CupertinoColors.darkBackgroundGray,
+                                        fontSize: 14.0,
+                                      ),
                                     ),
-                                  ),
+                                    const SizedBox(height: 2.0),
 
+                                    const SizedBox(height: 2.0),
+                                    if (snapshot.data!.empty.indigo.empty[index]
+                                            .cunning?.cdata !=
+                                        null) ...[
+                                      Text(
+                                        "조문 참고 자료 : ${snapshot.data!.empty.indigo.empty[index].cunning?.cdata}",
+                                        style: const TextStyle(
+                                          color: CupertinoColors
+                                              .darkBackgroundGray,
+                                          fontSize: 14.0,
+                                        ),
+                                      ),
+                                    ]
+                                  ],
                                 ],
                               )
                             ],
@@ -151,3 +173,5 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
     );
   }
 }
+
+
