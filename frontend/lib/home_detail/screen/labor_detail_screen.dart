@@ -96,7 +96,7 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.only(
-            top: 15.0, left: 15.0, right: 15.0, bottom: 0.0),
+            top: 0.0, left: 15.0, right: 15.0, bottom: 0.0),
         child: FutureBuilder<Services>(
           future: services,
           builder: (context, snapshot) {
@@ -118,6 +118,7 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
                   children: [
                     Column(
                       children: [
+                        const SizedBox(height: 5.0),
                         Text(
                           snapshot.data!.empty.purple.tentacled.cdata,
                           style: subTextStyle,
@@ -130,7 +131,7 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        const SizedBox(height: 20.0),
+                        const SizedBox(height: 5.0),
                         ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: snapshot.data!.empty.indigo.empty.length,
@@ -141,10 +142,10 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
                                 // const SizedBox(height: 10.0),
                                 Column(
                                   crossAxisAlignment:
-                                  CrossAxisAlignment.stretch,
+                                      CrossAxisAlignment.stretch,
                                   children: [
                                     if (snapshot.data?.empty.indigo.empty[index]
-                                        .ambitious?.cdata ==
+                                            .ambitious?.cdata ==
                                         null) ...[
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -159,73 +160,98 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
                                       ...[
                                         Text(
                                           "제${snapshot.data?.empty.indigo
-                                              .empty[index].fluffy
-                                              .text}장(${snapshot.data?.empty
-                                              .indigo.empty[index].ambitious
-                                              ?.cdata})",
-                                          style: subTextStyle.copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16.0,
-                                          ),
+                                              .empty[index].fluffy.text}장(${snapshot.data?.empty.indigo.empty[index].ambitious?.cdata})",
+                                        style: subTextStyle.copyWith(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 16.0,
                                         ),
-                                        const SizedBox(height: 5.0),
+                                      ),
+                                      const SizedBox(height: 5.0),
+                                      Text(
+                                        snapshot.data!.empty.indigo.empty[index]
+                                            .purple.cdata,
+                                        style: const TextStyle(
+                                          color: CupertinoColors
+                                              .darkBackgroundGray,
+                                          fontSize: 14.0,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 5.0),
+                                      // ❗️에러 구간..❗️
+                                      if (snapshot.data!.empty.indigo
+                                              .empty[index].magenta !=
+                                          null) ...[
+                                        for (int i = 0;
+                                            i <
+                                                snapshot
+                                                    .data!
+                                                    .empty
+                                                    .indigo
+                                                    .empty[index]
+                                                    .magenta
+                                                    .length;
+                                            i++) ...[
+                                          const SizedBox(height: 4.0),
+                                          if (snapshot
+                                                  .data!
+                                                  .empty
+                                                  .indigo
+                                                  .empty[index]
+                                                  .magenta[i]?["항내용"] !=
+                                              null) ...[
+                                            Text(snapshot
+                                                .data!
+                                                .empty
+                                                .indigo
+                                                .empty[index]
+                                                .magenta[i]?["항내용"]["_cdata"].toString() ?? ""),
+                                          ],
+                                          const SizedBox(height: 4.0),
+                                          if (snapshot
+                                                  .data!
+                                                  .empty
+                                                  .indigo
+                                                  .empty[index]
+                                                  .magenta[i]?["호"] !=
+                                              null) ...[
+                                            for (int j = 0;
+                                                j <
+                                                    snapshot
+                                                        .data!
+                                                        .empty
+                                                        .indigo
+                                                        .empty[index]
+                                                        .magenta[i]?["호"]
+                                                        ?.length;
+                                                j++) ...[
+                                              Text(snapshot
+                                                          .data!
+                                                          .empty
+                                                          .indigo
+                                                          .empty[index]
+                                                          .magenta[i]?["호"][j]
+                                                      ["호내용"]["_cdata"] ??
+                                                  ""),
+                                              const SizedBox(height: 4.0),
+                                            ]
+                                          ],
+                                        ],
+                                      ] else
+                                        ...[],
+                                      const SizedBox(height: 2.0),
+                                      if (snapshot.data!.empty.indigo
+                                              .empty[index].cunning?.cdata !=
+                                          null) ...[
                                         Text(
-                                          snapshot.data!.empty.indigo
-                                              .empty[index]
-                                              .purple.cdata,
+                                          "조문 참고 자료 : ${snapshot.data!.empty.indigo.empty[index].cunning?.cdata}",
                                           style: const TextStyle(
                                             color: CupertinoColors
                                                 .darkBackgroundGray,
                                             fontSize: 14.0,
                                           ),
                                         ),
-                                        const SizedBox(height: 5.0),
-                                        if (snapshot.data!.empty.hang
-                                            ?.empty[index].empty?.cdata !=
-                                            null) ...[
-                                          Text(
-                                            "항 : ${snapshot.data!.empty.hang
-                                                ?.empty[index].empty?.cdata}",
-                                            style: const TextStyle(
-                                              color: CupertinoColors
-                                                  .darkBackgroundGray,
-                                              fontSize: 14.0,
-                                            ),
-                                          ),
-                                          if (snapshot.data!.empty.hang
-                                              ?.empty[index].sticky !=
-                                              null) ...[
-                                            Text(
-                                              snapshot.data!.empty.hang
-                                                  ?.empty[index]
-                                                  .sticky as String,
-                                              style: const TextStyle(
-                                                color: CupertinoColors
-                                                    .darkBackgroundGray,
-                                                fontSize: 14.0,
-                                              ),
-                                            ),
-                                          ],
-                                        ] else
-                                          ...[
-                                            Text("NULL")
-                                          ],
-                                        const SizedBox(height: 2.0),
-                                        if (snapshot.data!.empty.indigo
-                                            .empty[index].cunning?.cdata !=
-                                            null) ...[
-                                          Text(
-                                            "조문 참고 자료 : ${snapshot.data!.empty
-                                                .indigo.empty[index].cunning
-                                                ?.cdata}",
-                                            style: const TextStyle(
-                                              color: CupertinoColors
-                                                  .darkBackgroundGray,
-                                              fontSize: 14.0,
-                                            ),
-                                          ),
-                                        ]
                                       ],
+                                    ],
                                   ],
                                 )
                               ],
