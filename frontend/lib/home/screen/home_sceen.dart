@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:migrant_law_solutionchallenge/home_detail/screen/search_detail_page.dart';
+import 'package:migrant_law_solutionchallenge/home_detail/screen/equality_detail_screen.dart';
+import 'package:migrant_law_solutionchallenge/home_detail/screen/search_detail_screen.dart';
 import '../../const/color.dart';
+import '../../home_detail/screen/employment_detail_screen.dart';
+import '../../home_detail/screen/labor_detail_screen.dart';
+import '../../home_detail/screen/retirement_detail_screen.dart';
+import '../../home_detail/screen/safety_detail_screen.dart';
+import '../../home_detail/screen/wage_detail_screen.dart';
 import '../widget/home_searchbar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -129,8 +135,16 @@ class _Body extends StatelessWidget {
     'equality.png',
   ];
 
-  final navigationList = <Widget> [
+  // 네비게이션
+  int currentIndex = 0;
 
+  final List<Widget> _navigationList = <Widget> [
+    const LaborDetailScreen(),
+    const EmploymentDetailScreen(),
+    const SafetyDetailScreen(),
+    const RetirementDetailScreen(),
+    const WageDetailScreen(),
+    const EqualityDetailScreen(),
   ];
 
   @override
@@ -158,9 +172,7 @@ class _Body extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (BuildContext context) {
-                      return HomeDetailPage(
-                        whatPage: index,
-                      );
+                      return _navigationList[index];
                     }));
                   },
                   child: Container(

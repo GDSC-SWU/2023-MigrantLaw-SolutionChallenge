@@ -6,7 +6,7 @@ import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:http/http.dart' as http;
 
 import '../const/api.dart';
-import '../service/model/services.dart';
+import '../service/model/labor_services.dart';
 
 class LaborDetailScreen extends StatefulWidget {
   const LaborDetailScreen({Key? key}) : super(key: key);
@@ -16,28 +16,27 @@ class LaborDetailScreen extends StatefulWidget {
 }
 
 class _LaborDetailScreenState extends State<LaborDetailScreen> {
-  final subTextStyle = TextStyle(
+  final subTextStyle = const TextStyle(
       color: SECONDARY_COLOR1, fontSize: 23, fontWeight: FontWeight.w800);
 
-  final mainTextStyle = TextStyle(
+  final mainTextStyle = const TextStyle(
       color: PRIMARY_COLOR, fontSize: 23, fontWeight: FontWeight.w800);
 
   static String endPointUrl = API().getLaborUrl();
   final Uri url = Uri.parse(endPointUrl);
 
-  late Future<Services> services;
-  late Future<The1> the1Services;
+  late Future<LaborServices> services;
 
   bool _showBackToTopButton = false;
 
   // scroll controller
   late ScrollController _scrollController;
 
-  Future<Services> fetchData() async {
+  Future<LaborServices> fetchData() async {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      return Services.fromJson(json.decode(response.body));
+      return LaborServices.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to load Services..");
     }
@@ -70,7 +69,7 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
   // This function is triggered when the user presses the back-to-top button
   void _scrollToTop() {
     _scrollController.animateTo(0,
-        duration: const Duration(seconds: 3), curve: Curves.linear);
+        duration: const Duration(seconds: 3), curve: Curves.bounceIn);
   }
 
   @override
@@ -78,6 +77,9 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
     return Scaffold(
       backgroundColor: BODY_TEXT_COLOR,
       appBar: AppBar(
+        iconTheme: const IconThemeData(
+          color: PRIMARY_COLOR
+        ),
         elevation: 0,
         backgroundColor: BODY_TEXT_COLOR,
         title: Container(
@@ -97,7 +99,7 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
       body: Padding(
         padding: const EdgeInsets.only(
             top: 0.0, left: 15.0, right: 15.0, bottom: 0.0),
-        child: FutureBuilder<Services>(
+        child: FutureBuilder<LaborServices>(
           future: services,
           builder: (context, snapshot) {
             // 에러 수신 시 에러 메시지 출력
@@ -107,7 +109,11 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
             // 상태처리 인디케이터 표시. 앱 초기에 출력
             if (!snapshot.hasData) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    PRIMARY_COLOR,
+                  ),
+                ),
               );
             }
             return Scrollbar(
@@ -160,7 +166,7 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
                                       ...[
                                         Text(
                                           "제${snapshot.data?.empty.indigo
-                                              .empty[index].fluffy.text}장(${snapshot.data?.empty.indigo.empty[index].ambitious?.cdata})",
+                                              .empty[index].fluffy.text}조(${snapshot.data?.empty.indigo.empty[index].ambitious?.cdata})",
                                         style: subTextStyle.copyWith(
                                           fontWeight: FontWeight.w700,
                                           fontSize: 16.0,
@@ -177,7 +183,6 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
                                         ),
                                       ),
                                       const SizedBox(height: 5.0),
-                                      // ❗️에러 구간..❗️
                                       if (snapshot.data!.empty.indigo
                                               .empty[index].magenta !=
                                           null) ...[
@@ -272,9 +277,8 @@ class _LaborDetailScreenState extends State<LaborDetailScreen> {
           ? null
           : FloatingActionButton(
         onPressed: _scrollToTop,
-        child: const Icon(Icons.arrow_upward, color: BODY_TEXT_COLOR),
-        backgroundColor: PRIMARY_COLOR.withOpacity(0.9),
-      ),
+              backgroundColor: PRIMARY_COLOR.withOpacity(0.9),
+              child: const Icon(Icons.arrow_upward, color: BODY_TEXT_COLOR)),
     );
   }
 }
