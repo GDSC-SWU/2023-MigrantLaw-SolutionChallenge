@@ -69,7 +69,7 @@ class _EqualityDetailScreenState extends State<EqualityDetailScreen> {
   // This function is triggered when the user presses the back-to-top button
   void _scrollToTop() {
     _scrollController.animateTo(0,
-        duration: const Duration(seconds: 3), curve: Curves.bounceIn);
+        duration: const Duration(seconds: 3), curve: Curves.linear);
   }
 
   @override
