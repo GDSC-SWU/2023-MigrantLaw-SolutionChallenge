@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		O91wpj7uJwzNBTsnWcUktz3lYWE=
+		1fHAAWB2ihzKdOmXv9LS5xhxZQo=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -44,6 +44,26 @@
 		<data>
 		J0u736BwzA7B6kBPEQZB71emxiM=
 		</data>
+		<key>flutter_assets/assets/images/country/china.jpg</key>
+		<data>
+		2wZtRqp47ZhJoGYik8Y6ExbPWXE=
+		</data>
+		<key>flutter_assets/assets/images/country/philippines.jpeg</key>
+		<data>
+		MHtcZIH5rnHQGqNyuvO57YO8ovw=
+		</data>
+		<key>flutter_assets/assets/images/country/thailand.png</key>
+		<data>
+		scTjN8/RPLntT0yrvzg0duy41Q4=
+		</data>
+		<key>flutter_assets/assets/images/country/uzbekistan.png</key>
+		<data>
+		7x2VOcUBMMFIsLruhLOHtcMo38U=
+		</data>
+		<key>flutter_assets/assets/images/country/vietnam.jpeg</key>
+		<data>
+		/sdRV8WfQKLoup20MAPt9k8IGsc=
+		</data>
 		<key>flutter_assets/assets/images/employment_insurance.png</key>
 		<data>
 		LgufnsrWfjxSZpT9NHFXXfBnIYs=
@@ -51,6 +71,10 @@
 		<key>flutter_assets/assets/images/equality.png</key>
 		<data>
 		i7m3Z2GIoZqa9IBPi7bcQ+7FX34=
+		</data>
+		<key>flutter_assets/assets/images/google_translate.png</key>
+		<data>
+		5KEt3OibmV3K+vLP9fj/34M3ttg=
 		</data>
 		<key>flutter_assets/assets/images/labor_standards.png</key>
 		<data>
@@ -78,7 +102,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		i73gIi+sRXebAKKZKO3hDltJV3U=
+		dRU80hBl6eRo8zM1IbNGbnjZpLU=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -99,7 +123,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			upzfMjZr84d0zrKqVFyGpKFO5qf3KnpYTCOadDu3160=
+			RhVfEzdLj4z6v63r2YYwI8SfaKHyG8OMD2leZEVw5I0=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -158,6 +182,41 @@
 			BFuAJqCkI+/FyF5txWubJwXzTrvEPotdBmTdHIYUz5A=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/country/china.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			p9T685NoVTfOi+4chG5hiH72jeWF3vEIDfTE4WXzaj4=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/country/philippines.jpeg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uQgrd5J1a6X8hiwlep94COCrrm4Bs+RZ4ulfRM6MX0s=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/country/thailand.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6XaIUHjoMRI5Gqn16oa6Rt7uwqRYYsVdUzHG7L1F8ck=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/country/uzbekistan.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G3DyU3l8gMeWxEgiTy+WElZkLE9nECBla2KSn9NK304=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/country/vietnam.jpeg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			x48OzsgtbS8dGTG1TzgG4iZcAL5CX46yflse2uoabIc=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/images/employment_insurance.png</key>
 		<dict>
 			<key>hash2</key>
@@ -170,6 +229,13 @@
 			<key>hash2</key>
 			<data>
 			yvahl2a2f361ikCz8YQWfvn5N0Ftys0c0xC+trxdll8=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/google_translate.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YgYwUWR9900iPJO0pAE96U28H4Z1k8HnHmKPkCMB7K8=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/labor_standards.png</key>
@@ -218,7 +284,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3U1AYcchiv6pi7RwZG1CJTE/JLvFq+U5Qty+FVcqDrY=
+			e2PAtddQaNdfMb9Om8NVEsPnk2hsp0ANBH7KlPDLqcs=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

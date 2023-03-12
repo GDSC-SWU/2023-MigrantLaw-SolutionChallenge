@@ -80,7 +80,7 @@ class _Head extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-          right: 27.0, left: 27.0, top: 24.0, bottom: 5.0),
+          right: 27.0, left: 27.0, top: 5.0, bottom: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: const [

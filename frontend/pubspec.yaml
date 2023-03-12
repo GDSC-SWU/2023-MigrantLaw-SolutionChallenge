@@ -70,6 +70,12 @@ flutter:
     - assets/images/retirement.png
     - assets/images/safety_insurance.png
     - assets/images/wage_claim.png
+    - assets/images/google_translate.png
+    - assets/images/country/china.jpg
+    - assets/images/country/philippines.jpeg
+    - assets/images/country/thailand.png
+    - assets/images/country/uzbekistan.png
+    - assets/images/country/vietnam.jpeg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
