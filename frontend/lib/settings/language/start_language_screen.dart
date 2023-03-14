@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
+import 'package:migrant_law_solutionchallenge/home/screen/home_sceen.dart';
 
 const textStyle = TextStyle(
   fontSize: 24.0,
@@ -14,15 +16,15 @@ class StartLanguageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 150.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 120.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            const _header(),
+            _header(),
             const SizedBox(height: 20.0),
             _Body(),
-            // const SizedBox(height: 40.0),
-            //_bottom(),
+            const SizedBox(height: 30.0),
+            const _bottom(),
           ],
         ),
       ),
@@ -31,19 +33,32 @@ class StartLanguageScreen extends StatelessWidget {
 }
 
 class _header extends StatelessWidget {
-  const _header({Key? key}) : super(key: key);
+  _header({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/google_translate.png',
-            width: 100, height: 100, fit: BoxFit.fill),
+        Image.asset(
+          'assets/images/google_translate.png',
+          width: 90,
+          height: 90,
+          fit: BoxFit.fill,
+        ),
         const SizedBox(height: 15.0),
         const Text(
           "번역할 언어를 선택해 주세요",
           style: textStyle,
-        )
+        ),
+        const SizedBox(height: 5.0),
+        const Text(
+          "＊언어를 선택하지 않을 시 자동으로 한국어가 적용됩니다＊",
+          style: TextStyle(
+            fontSize: 12.0,
+            fontWeight: FontWeight.w500,
+            color: PRIMARY_COLOR,
+          ),
+        ),
       ],
     );
   }
@@ -52,7 +67,13 @@ class _header extends StatelessWidget {
 class _Body extends StatelessWidget {
   _Body({Key? key}) : super(key: key);
 
-  final country = <String>["중국어", "베트남", "태국", "우즈베키스탄", "필리핀"];
+  final country = <String>[
+    "中国",
+    "Việt Nam",
+    "ไทย",
+    "O'zbekiston",
+    "Republika ng Pilipinas",
+  ];
 
   final imgList = <String>[
     'china.jpg',
@@ -60,6 +81,14 @@ class _Body extends StatelessWidget {
     'thailand.png',
     'uzbekistan.png',
     'vietnam.jpeg',
+  ];
+
+  List<String> languageCode = <String>[
+    'zh',
+    'vi',
+    'th',
+    'uz',
+    'fil',
   ];
 
   @override
@@ -103,17 +132,11 @@ class LanguageCard extends StatefulWidget {
 class _LanguageCardState extends State<LanguageCard> {
   int slectedIndex = 0;
 
-  final textStyle = const TextStyle(
-    color: PRIMARY_COLOR,
-    fontSize: 18.0,
-    fontWeight: FontWeight.w600,
-  );
-
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.only(left: 45.0),
+        padding: const EdgeInsets.only(left: 0.0),
         child: ListTile(
           leading: Image.asset(
             'assets/images/country/${widget.countryImg}',
@@ -122,8 +145,15 @@ class _LanguageCardState extends State<LanguageCard> {
           ),
           title: Text(
             widget.country,
-            style: textStyle,
+            style: const TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+            ),
           ),
+          // shape: RoundedRectangleBorder(
+          //   side: BorderSide(color: Colors.black, width: 1),
+          //   borderRadius: BorderRadius.circular(5),
+          // ),
           onTap: () {
             setState(() {
               slectedIndex = widget.page;
@@ -143,7 +173,13 @@ class _bottom extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+            (Route<dynamic> route) => false,
+          );
+        },
         style: ElevatedButton.styleFrom(
           primary: PRIMARY_COLOR,
           textStyle: const TextStyle(

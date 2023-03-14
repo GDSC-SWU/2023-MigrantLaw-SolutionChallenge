@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:migrant_law_solutionchallenge/home_detail/screen/equality_detail_screen.dart';
-import 'package:migrant_law_solutionchallenge/home_detail/screen/search_detail_screen.dart';
+import 'package:migrant_law_solutionchallenge/home_detail/search/screen/search_labor_screen.dart';
 import '../../const/color.dart';
 import '../../home_detail/screen/employment_detail_screen.dart';
 import '../../home_detail/screen/labor_detail_screen.dart';
@@ -16,7 +16,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-    return SafeArea(
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: AppBar(
           actions: [
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
         ),
         backgroundColor: BODY_TEXT_COLOR,
         body: ListView(
-          padding: const EdgeInsets.symmetric(vertical: 40.0),
+          padding: const EdgeInsets.symmetric(vertical: 50.0),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
           children: <Widget>[

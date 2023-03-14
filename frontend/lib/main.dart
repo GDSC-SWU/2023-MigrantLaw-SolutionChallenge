@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:migrant_law_solutionchallenge/settings/language/start_language_screen.dart';
-import 'home/screen/navigation_screen.dart';
+import 'home/screen/home_sceen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const _APP(),
   );
@@ -18,7 +18,7 @@ class _APP extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "NotoSans",
       ),
-      home: const StartLanguageScreen(),
+      home: const HomeScreen(),
     );
   }
 }
