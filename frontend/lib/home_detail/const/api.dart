@@ -4,7 +4,7 @@ class API {
 
   // 근로기준법
   final LABOR_LAW = "/law/232199";
-  final LABOR_LAW_SEARCH = "/search/232199";
+  final LABOR_LAW_SEARCH = "/search/232199?q=";
 
   // 고용보험법
   final EMPLOYMENT_LAW = "/law/247483";
@@ -31,47 +31,47 @@ class API {
     return "$DOMAIN_URL$LABOR_LAW";
   }
 
-  String getLaborSearchUrl() {
-    return "$DOMAIN_URL$LABOR_LAW_SEARCH";
+  String getLaborSearchUrl(String data) {
+    return "$DOMAIN_URL$LABOR_LAW_SEARCH$data";
   }
 
   String getEmploymentUrl() {
     return "$DOMAIN_URL$EMPLOYMENT_LAW";
   }
 
-  String getEmploymentSearchUrl() {
-    return "$DOMAIN_URL$EMPLOYMENT_LAW_SEARCH";
+  String getEmploymentSearchUrl(String data) {
+    return "$DOMAIN_URL$EMPLOYMENT_LAW_SEARCH$data";
   }
 
   String getSafetyUrl() {
     return "$DOMAIN_URL$SAFETY_LAW";
   }
 
-  String getSafetySearchUrl() {
-    return "$DOMAIN_URL$SAFETY_LAW_SEARCH";
+  String getSafetySearchUrl(String data) {
+    return "$DOMAIN_URL$SAFETY_LAW_SEARCH$data";
   }
 
   String getRetirementUrl(){
     return "$DOMAIN_URL$RETIREMENT_LAW";
   }
 
-  String getRetirementSearchUrl(){
-    return "$DOMAIN_URL$RETIREMENT_LAW_SEARCH";
+  String getRetirementSearchUrl(String data){
+    return "$DOMAIN_URL$RETIREMENT_LAW_SEARCH$data";
   }
 
   String getEqualityUrl() {
     return "$DOMAIN_URL$EQUALITY_LAW";
   }
 
-  String getEqualitySearchUrl() {
-    return "$DOMAIN_URL$EQUALITY_LAW_SEARCH";
+  String getEqualitySearchUrl(String data) {
+    return "$DOMAIN_URL$EQUALITY_LAW_SEARCH$data";
   }
 
   String getWageUrl() {
     return "$DOMAIN_URL$WAGE_LAW";
   }
 
-  String getWageSearchUrl() {
-    return "$DOMAIN_URL$WAGE_LAW_SEARCH";
+  String getWageSearchUrl(String data) {
+    return "$DOMAIN_URL$WAGE_LAW_SEARCH$data";
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
@@ -31,15 +32,24 @@ class HomeDetailPage extends StatefulWidget {
 
 class _HomeDetailPageState extends State<HomeDetailPage> {
 
-  static String endPointUrl = API().getLaborUrl();
-  final Uri url = Uri.parse(endPointUrl);
+  final subTextStyle = const TextStyle(
+      color: SECONDARY_COLOR1, fontSize: 23, fontWeight: FontWeight.w800);
 
+  final mainTextStyle = const TextStyle(
+      color: PRIMARY_COLOR, fontSize: 23, fontWeight: FontWeight.w800);
+
+  static String endPointUrl = API().getLaborUrl();
+  static String endPointSearchUrl = "$endPointUrl?q=폭행";
+
+  final Uri url = Uri.parse(endPointSearchUrl);
   late Future<LaborServices> services;
 
   Future<LaborServices> fetchData() async {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
+      print(url);
+      print(response.body);
       return LaborServices.fromJson(json.decode(response.body));
     } else {
       throw Exception("Failed to load Services..");
@@ -51,6 +61,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
     super.initState();
     fetchData();
     services = fetchData();
+    print("endPointSearchUrl $endPointSearchUrl");
   }
 
   @override
@@ -127,14 +138,9 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                                 child: Card(
                                   margin: const EdgeInsets.symmetric(vertical: 1.0),
                                   elevation: 0,
-                                  child: Text(
-                                    "$position",
-                                    style: const TextStyle(
-                                      color: BODY_TEXT_COLOR2,
-                                      fontFamily: "NotoSans",
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                                  child: Column(
+                                    children: [
+                                    ],
                                   ),
                                 ),
                               ),
