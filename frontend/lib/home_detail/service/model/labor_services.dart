@@ -1,9 +1,5 @@
 import 'dart:convert';
 
-LaborServices servicesFromJson(String str) => LaborServices.fromJson(json.decode(str));
-
-String servicesToJson(LaborServices data) => json.encode(data.toJson());
-
 class LaborServices {
   LaborServices({
     required this.declaration,

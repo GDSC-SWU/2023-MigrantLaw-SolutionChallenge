@@ -8,23 +8,23 @@ class API {
 
   // 고용보험법
   final EMPLOYMENT_LAW = "/law/247483";
-  final EMPLOYMENT_LAW_SEARCH = "/search/247483";
+  final EMPLOYMENT_LAW_SEARCH = "/search/247483?q=";
 
   // 산재보험
   final SAFETY_LAW = "/law/239369";
-  final SAFETY_LAW_SEARCH = "/search/239369";
+  final SAFETY_LAW_SEARCH = "/search/239369?q=";
 
   // 퇴직급여법
   final RETIREMENT_LAW = "/law/239311";
-  final RETIREMENT_LAW_SEARCH = "/search/239311";
+  final RETIREMENT_LAW_SEARCH = "/search/239311?q=";
 
   // 남녀고용평등법
   final EQUALITY_LAW = "/law/72458";
-  final EQUALITY_LAW_SEARCH = "/search/72458";
+  final EQUALITY_LAW_SEARCH = "/search/72458?q=";
 
   // 임금채권보장법
   final WAGE_LAW = "/law/231479";
-  final WAGE_LAW_SEARCH = "/search/231479";
+  final WAGE_LAW_SEARCH = "/search/231479?q=";
 
 
   String getLaborUrl() {

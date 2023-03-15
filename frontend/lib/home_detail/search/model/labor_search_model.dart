@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 List<SearchLabor> searchLaborFromJson(String str) => List<SearchLabor>.from(json.decode(str).map((x) => SearchLabor.fromJson(x)));
-
 String searchLaborToJson(List<SearchLabor> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class SearchLabor {
@@ -14,12 +13,12 @@ class SearchLabor {
     required this.hang,
   });
 
-  String jomunKey;
-  String jomunTitle;
-  String jomunStartDay;
-  String jomunContent;
-  String jomunReference;
-  dynamic hang;
+  final String jomunKey;
+  final String jomunTitle;
+  final String jomunStartDay;
+  final String jomunContent;
+  final String jomunReference;
+  final dynamic hang;
 
   factory SearchLabor.fromJson(Map<String, dynamic> json) => SearchLabor(
     jomunKey: json["jomunKey"],
@@ -49,11 +48,11 @@ class HangElement {
     this.fluffy,
   });
 
-  List<Map<String, Value>>? tentacled;
-  Empty empty;
-  Value hang;
-  Class? purple;
-  Class? fluffy;
+  final List<Map<String, Value>>? tentacled;
+  final Empty empty;
+  final Value hang;
+  final Class? purple;
+  final Class? fluffy;
 
   factory HangElement.fromJson(Map<String, dynamic> json) => HangElement(
     tentacled: json["호"] == null ? [] : List<Map<String, Value>>.from(json["호"]!.map((x) => Map.from(x).map((k, v) => MapEntry<String, Value>(k, Value.fromJson(v))))),
@@ -77,7 +76,7 @@ class Empty {
     required this.cdata,
   });
 
-  dynamic cdata;
+  final dynamic cdata;
 
   factory Empty.fromJson(Map<String, dynamic> json) => Empty(
     cdata: json["_cdata"],
@@ -93,7 +92,7 @@ class Class {
     required this.text,
   });
 
-  String text;
+  final String text;
 
   factory Class.fromJson(Map<String, dynamic> json) => Class(
     text: json["_text"],
@@ -109,7 +108,7 @@ class Value {
     required this.cdata,
   });
 
-  String cdata;
+  final String cdata;
 
   factory Value.fromJson(Map<String, dynamic> json) => Value(
     cdata: json["_cdata"],
@@ -125,7 +124,7 @@ class PurpleHang {
     required this.empty,
   });
 
-  List<Map<String, Value>> empty;
+  final List<Map<String, Value>> empty;
 
   factory PurpleHang.fromJson(Map<String, dynamic> json) => PurpleHang(
     empty: List<Map<String, Value>>.from(json["호"].map((x) => Map.from(x).map((k, v) => MapEntry<String, Value>(k, Value.fromJson(v))))),

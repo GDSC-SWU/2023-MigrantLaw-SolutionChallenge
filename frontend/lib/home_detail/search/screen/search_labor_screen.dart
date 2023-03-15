@@ -1,13 +1,14 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import '../../const/api.dart';
-import '../../service/model/labor_services.dart';
 import 'package:http/http.dart' as http;
+
+import '../model/labor_search_model.dart';
 
 const List<Tab> tabs = <Tab>[
   Tab(text: '근로기준법'),
@@ -38,19 +39,26 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   final mainTextStyle = const TextStyle(
       color: PRIMARY_COLOR, fontSize: 23, fontWeight: FontWeight.w800);
 
-  static String endPointUrl = API().getLaborUrl();
-  static String endPointSearchUrl = "$endPointUrl?q=폭행";
+  static String laborEndPointUrl = API().getLaborSearchUrl("폭행");
+  static String employmentEndPointUrl = API().getEmploymentSearchUrl("폭행");
+  static String safetyEndPointUrl = API().getSafetySearchUrl("폭행");
+  static String retirementEndPointUrl = API().getRetirementSearchUrl("폭행");
+  static String wageEndPointUrl = API().getWageSearchUrl("폭행");
+  static String equalityEndPointUrl = API().getEqualitySearchUrl("폭행");
 
-  final Uri url = Uri.parse(endPointSearchUrl);
-  late Future<LaborServices> services;
+  final Uri url = Uri.parse(laborEndPointUrl);
+  late Future<List<SearchLabor>> services;
 
-  Future<LaborServices> fetchData() async {
+  bool _showBackToTopButton = false;
+
+  // scroll controller
+  late ScrollController _scrollController;
+
+  Future<List<SearchLabor>> fetchData() async {
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
-      print(url);
-      print(response.body);
-      return LaborServices.fromJson(json.decode(response.body));
+      return searchLaborFromJson(response.body);
     } else {
       throw Exception("Failed to load Services..");
     }
@@ -61,7 +69,17 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
     super.initState();
     fetchData();
     services = fetchData();
-    print("endPointSearchUrl $endPointSearchUrl");
+
+    _scrollController = ScrollController()
+      ..addListener(() {
+        setState(() {
+          if (_scrollController.offset >= 1000) {
+            _showBackToTopButton = true; // show the back-to-top button
+          } else {
+            _showBackToTopButton = false; // hide the back-to-top button
+          }
+        });
+      });
   }
 
   @override
@@ -100,11 +118,12 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                 tabs: tabs,
               ),
             ),
-            body: FutureBuilder<LaborServices>(
+            body: FutureBuilder<List<SearchLabor>>(
               future: services,
               builder: (context, snapshot) {
                 // 에러 수신 시 에러 메시지 출력
                 if (snapshot.hasError) {
+                  print("snapshot : $snapshot");
                   return Text("${snapshot.error}");
                 }
                 // 상태처리 인디케이터 표시. 앱 초기에 출력
@@ -122,32 +141,46 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
                       child: ListView.builder(
-                        itemCount: tabs.length,
-                        itemBuilder: (context, position) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 6.0),
-                            child: InkWell(
-                              onTap: () {
-                                // 어떤 카드인지 식별 인덱스
-                                print(position);
-                              },
-                              child: Container(
-                                height: 80,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Card(
-                                  margin: const EdgeInsets.symmetric(vertical: 1.0),
-                                  elevation: 0,
-                                  child: Column(
-                                    children: [
-                                    ],
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, position) {
+                            return Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 4.0, top: 4.0, left: 2.0, right: 2.0),
+                              child: InkWell(
+                                onTap: () {
+                                  // 어떤 카드인지 식별 인덱스
+                                  print(position);
+                                },
+                                child: Container(
+                                  height: 80,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Card(
+                                    margin: const EdgeInsets.symmetric(
+                                        vertical: 1.0),
+                                    elevation: 0,
+                                    child: Column(
+                                      children: [
+                                        // const Divider(color: Colors.black),
+                                        const SizedBox(height: 6.0),
+                                        Text(
+                                          "${snapshot.data![position].jomunTitle}\n${snapshot.data![position].jomunContent}",
+                                          overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                              fontSize: 16.0,
+                                              fontFamily: 'NotoSans',
+                                              color: Color(0xFF212121),
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      ),
+                            );
+                          },
+                        ),
                     );
                   },
                   ).toList(),
