@@ -1,6 +1,6 @@
 class API {
   // Domain URL
-  final DOMAIN_URL = "http://34.64.81.164:8080";
+  final DOMAIN_URL = "http://34.64.48.227:8080";
 
   // 근로기준법
   final LABOR_LAW = "/law/232199";
