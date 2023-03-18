@@ -1,14 +1,13 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
+import 'package:migrant_law_solutionchallenge/home_detail/search/model/labor_search_model.dart';
+
 import '../../const/api.dart';
 import 'package:http/http.dart' as http;
-
-import '../model/labor_search_model.dart';
 
 const List<Tab> tabs = <Tab>[
   Tab(text: '근로기준법'),
@@ -39,23 +38,37 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   final mainTextStyle = const TextStyle(
       color: PRIMARY_COLOR, fontSize: 23, fontWeight: FontWeight.w800);
 
-  static String laborEndPointUrl = API().getLaborSearchUrl("폭행");
-  static String employmentEndPointUrl = API().getEmploymentSearchUrl("폭행");
-  static String safetyEndPointUrl = API().getSafetySearchUrl("폭행");
-  static String retirementEndPointUrl = API().getRetirementSearchUrl("폭행");
-  static String wageEndPointUrl = API().getWageSearchUrl("폭행");
-  static String equalityEndPointUrl = API().getEqualitySearchUrl("폭행");
+  int tapIndex = 0;
 
-  final Uri url = Uri.parse(laborEndPointUrl);
+  dynamic callAPI(int tab) {
+    switch(tab) {
+      case 0 :
+        return API().getLaborSearchUrl(widget.searchText);
+      case 1:
+        return API().getEmploymentSearchUrl(widget.searchText);
+      case 2:
+        return API().getSafetySearchUrl(widget.searchText);
+      case 3:
+        return API().getRetirementSearchUrl(widget.searchText);
+      case 4:
+        return API().getWageSearchUrl(widget.searchText);
+      case 5:
+        return API().getEqualitySearchUrl(widget.searchText);
+      default:
+        return API().getEmploymentSearchUrl(widget.searchText);
+    }
+  }
+
   late Future<List<SearchLabor>> services;
 
-  bool _showBackToTopButton = false;
-
-  // scroll controller
-  late ScrollController _scrollController;
-
   Future<List<SearchLabor>> fetchData() async {
+
+    print("widget.searchText : ${widget.searchText}");
+    String endPointUrl = callAPI(tapIndex);
+    final Uri url = Uri.parse(endPointUrl);
+
     final response = await http.get(url);
+    print("response.body : ${response.body}");
 
     if (response.statusCode == 200) {
       return searchLaborFromJson(response.body);
@@ -67,19 +80,9 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   @override
   void initState() {
     super.initState();
+    callAPI(tapIndex);
     fetchData();
     services = fetchData();
-
-    _scrollController = ScrollController()
-      ..addListener(() {
-        setState(() {
-          if (_scrollController.offset >= 1000) {
-            _showBackToTopButton = true; // show the back-to-top button
-          } else {
-            _showBackToTopButton = false; // hide the back-to-top button
-          }
-        });
-      });
   }
 
   @override
@@ -106,16 +109,22 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
               title: Text("'${widget.searchText}' 검색결과"),
               centerTitle: true,
               backgroundColor: PRIMARY_COLOR,
-              bottom: const TabBar(
+              bottom: TabBar(
                 indicatorColor: BODY_TEXT_COLOR,
                 labelColor: BODY_TEXT_COLOR,
-                labelStyle: TextStyle(
+                labelStyle: const TextStyle(
                   fontFamily: "NotoSans",
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
                 isScrollable: true,
                 tabs: tabs,
+                onTap: (index) {
+                  setState(() {
+                    tapIndex = index;
+                    fetchData();
+                  });
+                },
               ),
             ),
             body: FutureBuilder<List<SearchLabor>>(

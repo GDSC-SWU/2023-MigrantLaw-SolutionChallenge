@@ -3,13 +3,13 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-55.0.0",
+      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-56.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/analyzer-5.7.1",
+      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/analyzer-5.8.0",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -129,9 +129,9 @@
     },
     {
       "name": "dart_style",
-      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/dart_style-2.2.5",
+      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/dart_style-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.19"
     },
     {
       "name": "dio",
@@ -357,13 +357,13 @@
     },
     {
       "name": "sqflite",
-      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/sqflite-2.2.5",
+      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/sqflite-2.2.6",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/sqflite_common-2.4.2+2",
+      "rootUri": "file:///Users/mokjeong-a/.pub-cache/hosted/pub.dev/sqflite_common-2.4.3",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -458,7 +458,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-03-14T12:08:47.717863Z",
+  "generated": "2023-03-18T04:36:53.947128Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

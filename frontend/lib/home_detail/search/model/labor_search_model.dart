@@ -9,7 +9,6 @@ class SearchLabor {
     required this.jomunTitle,
     required this.jomunStartDay,
     required this.jomunContent,
-    required this.jomunReference,
     required this.hang,
   });
 
@@ -17,7 +16,6 @@ class SearchLabor {
   final String jomunTitle;
   final String jomunStartDay;
   final String jomunContent;
-  final String jomunReference;
   final dynamic hang;
 
   factory SearchLabor.fromJson(Map<String, dynamic> json) => SearchLabor(
@@ -25,7 +23,6 @@ class SearchLabor {
     jomunTitle: json["jomunTitle"],
     jomunStartDay: json["jomunStartDay"],
     jomunContent: json["jomunContent"],
-    jomunReference: json["jomunReference"],
     hang: json["hang"],
   );
 
@@ -34,7 +31,6 @@ class SearchLabor {
     "jomunTitle": jomunTitle,
     "jomunStartDay": jomunStartDay,
     "jomunContent": jomunContent,
-    "jomunReference": jomunReference,
     "hang": hang,
   };
 }
