@@ -1,6 +1,11 @@
+// To parse this JSON data, do
+//
+//     final searchLaw = searchLawFromJson(jsonString);
+
 import 'dart:convert';
 
 List<SearchLaw> searchLawFromJson(String str) => List<SearchLaw>.from(json.decode(str).map((x) => SearchLaw.fromJson(x)));
+
 String searchLawToJson(List<SearchLaw> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class SearchLaw {
@@ -9,6 +14,7 @@ class SearchLaw {
     required this.jomunTitle,
     required this.jomunStartDay,
     required this.jomunContent,
+    required this.jomunReference,
     required this.hang,
   });
 
@@ -16,6 +22,7 @@ class SearchLaw {
   final String jomunTitle;
   final String jomunStartDay;
   final String jomunContent;
+  final String jomunReference;
   final dynamic hang;
 
   factory SearchLaw.fromJson(Map<String, dynamic> json) => SearchLaw(
@@ -23,6 +30,7 @@ class SearchLaw {
     jomunTitle: json["jomunTitle"],
     jomunStartDay: json["jomunStartDay"],
     jomunContent: json["jomunContent"],
+    jomunReference: json["jomunReference"],
     hang: json["hang"],
   );
 
@@ -31,6 +39,7 @@ class SearchLaw {
     "jomunTitle": jomunTitle,
     "jomunStartDay": jomunStartDay,
     "jomunContent": jomunContent,
+    "jomunReference": jomunReference,
     "hang": hang,
   };
 }

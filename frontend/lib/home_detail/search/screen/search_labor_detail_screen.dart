@@ -22,7 +22,7 @@ class SearchLawDetailScreen extends StatefulWidget {
 
 class _SearchLawDetailScreenState extends State<SearchLawDetailScreen> {
   final subTextStyle = const TextStyle(
-      color: Color(0xFF212121), fontSize: 16, fontWeight: FontWeight.w500);
+      color: PRIMARY_COLOR, fontSize: 16, fontWeight: FontWeight.w700);
 
   final mainTextStyle = const TextStyle(
       color: SECONDARY_COLOR1, fontSize: 22, fontWeight: FontWeight.w800);
@@ -86,7 +86,7 @@ class _SearchLawDetailScreenState extends State<SearchLawDetailScreen> {
             }
             return Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
+                  const EdgeInsets.symmetric(horizontal: 5.0, vertical: 20.0),
               child: ListView.builder(
                 itemCount: 1,
                 itemBuilder: (context, position) {
@@ -102,7 +102,12 @@ class _SearchLawDetailScreenState extends State<SearchLawDetailScreen> {
                             snapshot.data![widget.cardPosition].jomunTitle,
                             style: mainTextStyle,
                           ),
-                          const SizedBox(height: 20.0),
+                          const SizedBox(height: 2.0),
+                          Text(
+                            "시행일자 : ${snapshot.data![widget.cardPosition].jomunStartDay}",
+                            style: mainTextStyle.copyWith(fontSize: 14.0),
+                          ),
+                          const SizedBox(height: 25.0),
                           Text(
                             snapshot.data![widget.cardPosition].jomunContent,
                             style: subTextStyle,
@@ -110,18 +115,21 @@ class _SearchLawDetailScreenState extends State<SearchLawDetailScreen> {
                           const SizedBox(height: 15.0),
                           if (snapshot.data![widget.cardPosition].hang.length != 0) ...[
                             for (int i = 0;
-                                i < snapshot.data![position].hang.length;
+                                i < snapshot.data![widget.cardPosition].hang.length;
                                 i++) ...[
                               if (snapshot.data![widget.cardPosition]
-                                      .hang[position]?["항내용"] !=
+                                      .hang[i]?["항내용"] !=
                                   null) ...[
                                 Text(snapshot.data![widget.cardPosition]
                                         .hang[i]?["항내용"]["_cdata"]
-                                        .toString() ??
-                                    "")
+                                        .toString() ?? "")
                               ],
                             ],
-                          ]
+                          ],
+                          if (snapshot.data![widget.cardPosition].jomunReference != "")...[
+                            const SizedBox(height: 2.0),
+                            Text(snapshot.data![widget.cardPosition].jomunReference)
+                          ],
                         ],
                       ),
                     ),

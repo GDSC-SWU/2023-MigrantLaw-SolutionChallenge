@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:migrant_law_solutionchallenge/home_detail/screen/equality_detail_screen.dart';
-import 'package:migrant_law_solutionchallenge/home_detail/search/screen/search_labor_screen.dart';
 import '../../const/color.dart';
 import '../../home_detail/screen/employment_detail_screen.dart';
 import '../../home_detail/screen/labor_detail_screen.dart';
@@ -42,7 +41,7 @@ class HomeScreen extends StatelessWidget {
             child: Text(
               "Law4you",
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 23.0,
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -89,7 +88,7 @@ class _Head extends StatelessWidget {
             "Hello\nmy neighbor",
             style: TextStyle(
               color: PRIMARY_COLOR,
-              fontSize: 40.0,
+              fontSize: 35.0,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -114,7 +113,7 @@ class _Body extends StatelessWidget {
   // 텍스트 스타일
   final textStyle = const TextStyle(
     color: Colors.black87,
-    fontSize: 12.0,
+    fontSize: 15.0,
     fontWeight: FontWeight.w700,
   );
 
@@ -151,12 +150,12 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 0),
       decoration: const BoxDecoration(
         color: SECONDARY_COLOR4,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 10.0, bottom: 6.0),
+        padding: const EdgeInsets.only(top: 45.0, bottom: 0.0),
         child: GridView.count(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -184,10 +183,10 @@ class _Body extends StatelessWidget {
                       children: [
                         Image.asset(
                           'assets/images/${imgList[index]}',
-                          height: 35.0,
+                          height: 37.0,
                           fit: BoxFit.cover,
                         ),
-                        const SizedBox(height: 6.0),
+                        const SizedBox(height: 10.0),
                         Text(
                           cardNameList[index],
                           textAlign: TextAlign.center,
@@ -223,7 +222,7 @@ class _Bottom extends StatelessWidget {
                 " 자주 찾아 보는 법률 ",
                 style: TextStyle(
                   color: PRIMARY_COLOR,
-                  fontSize: 16.0,
+                  fontSize: 20.0,
                   fontWeight: FontWeight.w800,
                 ),
               ),

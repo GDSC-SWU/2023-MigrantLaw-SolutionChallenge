@@ -102,6 +102,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
       length: tabs.length,
       initialIndex: 0,
       child: Scaffold (
+        backgroundColor: BODY_TEXT_COLOR,
         appBar: AppBar(
           title: Text("'${widget.searchText}' 검색결과"),
           centerTitle: true,
@@ -145,13 +146,13 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
             return TabBarView(
               children: tabs.map((Tab tab) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3.0),
                   child: ListView.builder(
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, position) {
                       return Padding(
                         padding: const EdgeInsets.only(
-                            bottom: 4.0, top: 4.0, left: 2.0, right: 2.0),
+                            bottom: 2.0, top: 2.0, left: 2.0, right: 2.0),
                         child: InkWell(
                           onTap: () {
                             print(position);
@@ -164,15 +165,17 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                           child: Container(
                             height: 80,
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15)),
+                                borderRadius: BorderRadius.circular(0),
+                            ),
                             child: Card(
+                              color: BODY_TEXT_COLOR,
                               margin: const EdgeInsets.symmetric(
                                   vertical: 1.0),
                               elevation: 0,
                               child: Column(
                                 children: [
                                   // const Divider(color: Colors.black),
-                                  const SizedBox(height: 6.0),
+                                  const SizedBox(height: 15.0),
                                   Text(
                                     "${snapshot.data![position].jomunTitle}\n${snapshot.data![position].jomunContent}",
                                     overflow: TextOverflow.ellipsis,
