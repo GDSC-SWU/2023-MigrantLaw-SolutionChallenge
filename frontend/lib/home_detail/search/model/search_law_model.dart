@@ -14,33 +14,33 @@ class SearchLaw {
     required this.jomunTitle,
     required this.jomunStartDay,
     required this.jomunContent,
-    required this.jomunReference,
     required this.hang,
+    this.message,
   });
 
   final String jomunKey;
   final String jomunTitle;
   final String jomunStartDay;
   final String jomunContent;
-  final String jomunReference;
   final dynamic hang;
+  final String? message;
 
   factory SearchLaw.fromJson(Map<String, dynamic> json) => SearchLaw(
-    jomunKey: json["jomunKey"],
-    jomunTitle: json["jomunTitle"],
-    jomunStartDay: json["jomunStartDay"],
-    jomunContent: json["jomunContent"],
-    jomunReference: json["jomunReference"],
-    hang: json["hang"],
-  );
+        jomunKey: json["jomunKey"],
+        jomunTitle: json["jomunTitle"],
+        jomunStartDay: json["jomunStartDay"],
+        jomunContent: json["jomunContent"],
+        hang: json["hang"],
+        message: json["message"],
+      );
 
   Map<String, dynamic> toJson() => {
     "jomunKey": jomunKey,
     "jomunTitle": jomunTitle,
     "jomunStartDay": jomunStartDay,
     "jomunContent": jomunContent,
-    "jomunReference": jomunReference,
     "hang": hang,
+    "message": message,
   };
 }
 
