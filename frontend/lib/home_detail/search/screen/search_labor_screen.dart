@@ -208,7 +208,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                           child: Card(
                             color: BODY_TEXT_COLOR,
                             margin: const EdgeInsets.symmetric(vertical: 1.0),
-                            elevation: 0,
+                            elevation: 1,
                             child: Column(
                               children: [
                                 // const Divider(color: Colors.black),
