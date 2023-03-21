@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import 'package:migrant_law_solutionchallenge/home_detail/search/model/search_law_model.dart';
 import 'package:migrant_law_solutionchallenge/home_detail/search/screen/search_labor_detail_screen.dart';
+import 'package:translator/translator.dart';
 
 import '../../const/api.dart';
 import 'package:http/http.dart' as http;
@@ -72,12 +74,11 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
     final Uri url = Uri.parse(endPointUrl);
 
     final response = await http.get(url);
-    print("response.body : ${response.body}");
 
     if (response.statusCode == 200 && !response.body.contains("message")) {
       return searchLawFromJson(response.body);
     } else if (response.body.contains("message")) {
-      throw "OOPS! 검색 결과가 없습니다..";
+      throw "OOPS! No Result...";
     } else {
       throw Exception("Failed to load Services..");
     }
@@ -106,7 +107,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
       child: Scaffold (
         backgroundColor: BODY_TEXT_COLOR,
           appBar: AppBar(
-            title: Text("'${widget.searchText}' 검색결과"),
+            title: Text("'${widget.searchText}' 검색결과").translate(),
             centerTitle: true,
             backgroundColor: PRIMARY_COLOR,
             bottom: buildTabBar(),
@@ -190,7 +191,6 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                           bottom: 2.0, top: 2.0, left: 2.0, right: 2.0),
                       child: InkWell(
                         onTap: () {
-                          print(position);
                           // 어떤 카드인지 식별 인덱스
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) {
@@ -222,7 +222,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                                     color: Color(0xFF212121),
                                     fontWeight: FontWeight.w500,
                                   ),
-                                ),
+                                ).translate(),
                               ],
                             ),
                           ),

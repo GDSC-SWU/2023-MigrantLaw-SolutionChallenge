@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_translator/google_translator.dart';
 
 import '../../../const/color.dart';
 import '../model/search_law_model.dart';
@@ -101,17 +102,17 @@ class _SearchLawDetailScreenState extends State<SearchLawDetailScreen> {
                       Text(
                         snapshot.data![widget.cardPosition].jomunTitle,
                         style: mainTextStyle,
-                      ),
+                      ).translate(),
                       const SizedBox(height: 2.0),
                       Text(
                         "시행일자 : ${snapshot.data![widget.cardPosition].jomunStartDay}",
                         style: mainTextStyle.copyWith(fontSize: 14.0),
-                      ),
+                      ).translate(),
                       const SizedBox(height: 25.0),
                       Text(
                         snapshot.data![widget.cardPosition].jomunContent,
                         style: subTextStyle,
-                      ),
+                      ).translate(),
                       const SizedBox(height: 15.0),
                       if (snapshot.data![widget.cardPosition].hang.length !=
                           0) ...[
@@ -124,7 +125,7 @@ class _SearchLawDetailScreenState extends State<SearchLawDetailScreen> {
                             Text(snapshot.data![widget.cardPosition]
                                     .hang[i]?["항내용"]["_cdata"]
                                     .toString() ??
-                                "")
+                                "").translate()
                           ],
                         ],
                       ],

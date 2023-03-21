@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
+import 'package:translator/translator.dart';
 
 import '../../home_detail/search/screen/search_labor_screen.dart';
 
@@ -12,6 +14,7 @@ class HomeSearchBar extends StatefulWidget {
 }
 
 class _HomeSearchBarState extends State<HomeSearchBar> {
+  final translator = GoogleTranslator();
   String text = '';
 
   @override
@@ -59,7 +62,7 @@ class SearchTextField extends StatelessWidget {
     return SizedBox(
       height: 45.0,
       child: CupertinoSearchTextField(
-        placeholder: "검색어를 입력해 주세요",
+        placeholder: "Search...",
         keyboardType: TextInputType.text,
         decoration: BoxDecoration(
             border: Border.all(

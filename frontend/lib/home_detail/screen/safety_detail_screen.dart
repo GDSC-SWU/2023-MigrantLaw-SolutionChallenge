@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:http/http.dart' as http;
 
@@ -128,7 +129,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
                         Text(
                           snapshot.data!.empty.purple.tentacled.cdata,
                           style: subTextStyle,
-                        ),
+                        ).translate(),
                         const SizedBox(height: 3.0),
                         Text(
                           "시행일자 : ${snapshot.data!.empty.purple.cunning.text}",
@@ -136,7 +137,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
                             fontSize: 14.0,
                             fontWeight: FontWeight.w700,
                           ),
-                        ),
+                        ).translate(),
                         const SizedBox(height: 5.0),
                         ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
@@ -171,7 +172,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
                                             fontWeight: FontWeight.w700,
                                             fontSize: 16.0,
                                           ),
-                                        ),
+                                        ).translate(),
                                         const SizedBox(height: 5.0),
                                         Text(
                                           snapshot.data!.empty.indigo.empty[index]
@@ -181,7 +182,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
                                                 .darkBackgroundGray,
                                             fontSize: 14.0,
                                           ),
-                                        ),
+                                        ).translate(),
                                         const SizedBox(height: 5.0),
                                         if (snapshot.data!.empty.indigo
                                             .empty[index].magenta !=
@@ -209,7 +210,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
                                                   .empty
                                                   .indigo
                                                   .empty[index]
-                                                  .magenta[i]?["항내용"]["_cdata"].toString() ?? ""),
+                                                  .magenta[i]?["항내용"]["_cdata"].toString() ?? "").translate(),
                                             ],
                                             const SizedBox(height: 4.0),
                                             if (snapshot
@@ -236,7 +237,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
                                                     .empty[index]
                                                     .magenta[i]?["호"][j]
                                                 ["호내용"]["_cdata"] ??
-                                                    ""),
+                                                    "").translate(),
                                                 const SizedBox(height: 4.0),
                                               ]
                                             ],
@@ -254,7 +255,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
                                                   .darkBackgroundGray,
                                               fontSize: 14.0,
                                             ),
-                                          ),
+                                          ).translate(),
                                         ],
                                       ],
                                   ],

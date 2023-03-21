@@ -1,16 +1,18 @@
+String chooseLanguage = "en";
+
 class Translation {
-  static String getLanguageCode(String language) {
+  static String getLanguageCode(int language) {
     switch (language) {
-      case '中国':
-        return 'zh';
-      case 'Việt Nam':
+      case 0:
+        return 'zh-tw';
+      case 1:
         return 'vi';
-      case 'ไทย':
+      case 2:
         return 'th';
-      case "O'zbekiston":
+      case 3:
         return 'uz';
-      case 'Republika ng Pilipinas':
-        return 'fil';
+      case 4:
+        return 'en';
       default:
         return 'ko';
     }
