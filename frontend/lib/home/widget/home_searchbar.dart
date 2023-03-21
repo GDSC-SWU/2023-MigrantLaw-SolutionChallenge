@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
+
+import '../../home_detail/search/screen/search_labor_screen.dart';
 
 class HomeSearchBar extends StatefulWidget {
   const HomeSearchBar({super.key});
@@ -71,6 +74,12 @@ class SearchTextField extends StatelessWidget {
         },
         onSubmitted: (String value) {
           fieldValue('Submitted text: $value');
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (BuildContext context) {
+            return HomeDetailPage(
+              searchText: value,
+            );
+          }));
         },
       ),
     );

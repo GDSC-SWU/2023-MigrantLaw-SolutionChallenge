@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'home/screen/navigation_screen.dart';
+import 'home/screen/home_sceen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    _APP(),
+    const _APP(),
   );
 }
 
@@ -17,7 +18,7 @@ class _APP extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "NotoSans",
       ),
-      home: NavigationScreen(),
+      home: const HomeScreen(),
     );
   }
 }

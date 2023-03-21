@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		nT8RTxz//WCpDfayXlzYOzqq/As=
+		RJMlYXLEPnd/ofkUVWmCE+PaGYs=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		yZTGblLEPG4jHw3v+y7x1sv4nKU=
+		5Bj4aRI/YnRnlxEjODp3VfgzOA8=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		O91wpj7uJwzNBTsnWcUktz3lYWE=
+		R9y2f6lsoPQI5k/0yG+Np2I250Q=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		38RCKDr+BXyL1Bc8FwFRLAmlLd0=
+		a7HtiWdv+EYvGnbDP8xQjehFC+k=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/NotoSansKR-Black.otf</key>
 		<data>
@@ -92,6 +92,26 @@
 		<data>
 		J0u736BwzA7B6kBPEQZB71emxiM=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/china.jpg</key>
+		<data>
+		2wZtRqp47ZhJoGYik8Y6ExbPWXE=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/philippines.jpeg</key>
+		<data>
+		MHtcZIH5rnHQGqNyuvO57YO8ovw=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/thailand.png</key>
+		<data>
+		scTjN8/RPLntT0yrvzg0duy41Q4=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/uzbekistan.png</key>
+		<data>
+		7x2VOcUBMMFIsLruhLOHtcMo38U=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/vietnam.jpeg</key>
+		<data>
+		/sdRV8WfQKLoup20MAPt9k8IGsc=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/employment_insurance.png</key>
 		<data>
 		LgufnsrWfjxSZpT9NHFXXfBnIYs=
@@ -99,6 +119,14 @@
 		<key>Frameworks/App.framework/flutter_assets/assets/images/equality.png</key>
 		<data>
 		i7m3Z2GIoZqa9IBPi7bcQ+7FX34=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/error.png</key>
+		<data>
+		nhdW0SV4yZhA41CoRhZaxac3rNQ=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/google_translate.png</key>
+		<data>
+		5KEt3OibmV3K+vLP9fj/34M3ttg=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/labor_standards.png</key>
 		<data>
@@ -126,7 +154,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		i73gIi+sRXebAKKZKO3hDltJV3U=
+		QMjTNfIORnyleNiGjZv20MUOaDk=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -139,6 +167,18 @@
 		<key>Frameworks/App.framework/flutter_assets/vm_snapshot_data</key>
 		<data>
 		bjcE383nCc8U85vWBdZ80X32NVA=
+		</data>
+		<key>Frameworks/FMDB.framework/FMDB</key>
+		<data>
+		czurlaRV+gBF8ZcFEx2qjzHS6Uk=
+		</data>
+		<key>Frameworks/FMDB.framework/Info.plist</key>
+		<data>
+		oB2DL3bzBAbXywOsefkcPdTC4DA=
+		</data>
+		<key>Frameworks/FMDB.framework/_CodeSignature/CodeResources</key>
+		<data>
+		ZGbluvotBE5RczYYJKrL8EUE3s0=
 		</data>
 		<key>Frameworks/Flutter.framework/Flutter</key>
 		<data>
@@ -224,9 +264,21 @@
 		<data>
 		iqxdhxDOeG6GKBcMhgGCL00SLGw=
 		</data>
+		<key>Frameworks/sqflite.framework/Info.plist</key>
+		<data>
+		vZyna0YWwAioMCLlIcB4/8Y3s4M=
+		</data>
+		<key>Frameworks/sqflite.framework/_CodeSignature/CodeResources</key>
+		<data>
+		8pCQK5cWkPZQvkKqfnM9gC5THqs=
+		</data>
+		<key>Frameworks/sqflite.framework/sqflite</key>
+		<data>
+		zbewwAMf/wKwRm786zSxyU73Bk4=
+		</data>
 		<key>Info.plist</key>
 		<data>
-		5JDp1wvHcfrhdxkGleM2vleEkK4=
+		Hm4r08XhAhS1E8/itwmt5TFnc5o=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -309,7 +361,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LWHXBbifHy2p9+J96EqJ64EYyjjaqSkwsNg09TQK4AM=
+			LdoOTSvCS7X8Xx8J7C5jsUM9Hv4UKub4Y3FuvNfHEL0=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -323,14 +375,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/5B7LOhYqGDgN1tH4X/b5XS6omz/vHwpsLMFbaJ094w=
+			TAuoO3Z+e74xztxZvqLFuZ9aF7QJ8WCTDNB6Lna4UII=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			upzfMjZr84d0zrKqVFyGpKFO5qf3KnpYTCOadDu3160=
+			/Coe5DjQ1gQrcu6kMWL5BUiL9l1SeF+DlQNF8X1NxX4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -344,7 +396,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			t9X4HJIEvo6t7GFejffhty6Bfme2oTz3ufsIdccDMpM=
+			2GeHO9GpSnnP/Gw9lXRFncG0d3xL7+KBOfc9G12xzws=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/fonts/NotoSansKR-Black.otf</key>
@@ -389,6 +441,41 @@
 			BFuAJqCkI+/FyF5txWubJwXzTrvEPotdBmTdHIYUz5A=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/china.jpg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			p9T685NoVTfOi+4chG5hiH72jeWF3vEIDfTE4WXzaj4=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/philippines.jpeg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uQgrd5J1a6X8hiwlep94COCrrm4Bs+RZ4ulfRM6MX0s=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/thailand.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6XaIUHjoMRI5Gqn16oa6Rt7uwqRYYsVdUzHG7L1F8ck=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/uzbekistan.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G3DyU3l8gMeWxEgiTy+WElZkLE9nECBla2KSn9NK304=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/country/vietnam.jpeg</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			x48OzsgtbS8dGTG1TzgG4iZcAL5CX46yflse2uoabIc=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/employment_insurance.png</key>
 		<dict>
 			<key>hash2</key>
@@ -401,6 +488,20 @@
 			<key>hash2</key>
 			<data>
 			yvahl2a2f361ikCz8YQWfvn5N0Ftys0c0xC+trxdll8=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/error.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yTAaX7iD4rCaa9yWfeG76yNOnuo+ORkg6zk3aYicHgY=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/google_translate.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YgYwUWR9900iPJO0pAE96U28H4Z1k8HnHmKPkCMB7K8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/labor_standards.png</key>
@@ -449,7 +550,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3U1AYcchiv6pi7RwZG1CJTE/JLvFq+U5Qty+FVcqDrY=
+			kZc0YxcjzrAJEqdWcQNQiJWZ5nxg1ccIUbIRmHRf21E=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -471,6 +572,27 @@
 			<key>hash2</key>
 			<data>
 			L69dzlyAJyxdLVGPUFBuUaiyjDwAOUWCUp3TXXm9RjY=
+			</data>
+		</dict>
+		<key>Frameworks/FMDB.framework/FMDB</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			SXuJV1J/9P1OP3ecT5y+2EzVsu5MHdBK9FTjTBINtEE=
+			</data>
+		</dict>
+		<key>Frameworks/FMDB.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mczuy+6y24B5ga1WPPBveL8YL16ZTamRbU27tZ4A5HM=
+			</data>
+		</dict>
+		<key>Frameworks/FMDB.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			i5yb4XycsEwkIbCgAs7Hq1Yl+ZlNXfR89DiAnKTGThM=
 			</data>
 		</dict>
 		<key>Frameworks/Flutter.framework/Flutter</key>
@@ -618,6 +740,27 @@
 			<key>hash2</key>
 			<data>
 			d80FTlJMKYsTn7JmRt/E1O9oOh+k9tF0xR10Q3ZrKn4=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TkF66UR5EjTQcMH0/X7jck4nt31lSC9lshfkQ4vmbKc=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xsAUnaD3/tB3mvsvbU55mu2uhcQlp5ARbk2pXbNGF0I=
+			</data>
+		</dict>
+		<key>Frameworks/sqflite.framework/sqflite</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1uKxPSx5G13LQJUCE9fg3jmqCKdDdqlvUZVv3G6cydI=
 			</data>
 		</dict>
 	</dict>
