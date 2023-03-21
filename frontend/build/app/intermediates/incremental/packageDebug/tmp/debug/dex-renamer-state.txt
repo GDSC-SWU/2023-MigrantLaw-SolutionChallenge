@@ -1,4 +1,4 @@
-#Sun Mar 19 15:33:12 KST 2023
+#Sun Mar 19 23:33:22 KST 2023
 base.0=/Users/mokjeong-a/Desktop/migrant_law_solutionchallenge/frontend/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

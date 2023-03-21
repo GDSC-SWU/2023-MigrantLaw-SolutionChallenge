@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:migrant_law_solutionchallenge/home/screen/home_sceen.dart';
+import 'package:translator/translator.dart';
 
 const textStyle = TextStyle(
   fontSize: 24.0,
@@ -9,6 +10,22 @@ const textStyle = TextStyle(
   color: PRIMARY_COLOR,
 );
 
+List<String> languageCode = <String>[
+  'zh-tw',
+  'vi',
+  'th',
+  'uz',
+  'en',
+];
+
+translate(String inputText) {
+  final translator = GoogleTranslator();
+  String input = inputText;
+  var translation = translator.translate(input, from: 'ko', to: 'en');
+  return translation;
+}
+
+@immutable
 class StartLanguageScreen extends StatelessWidget {
   const StartLanguageScreen({Key? key}) : super(key: key);
 
@@ -24,7 +41,7 @@ class StartLanguageScreen extends StatelessWidget {
             const SizedBox(height: 20.0),
             _Body(),
             const SizedBox(height: 30.0),
-            const _bottom(),
+            _bottom(),
           ],
         ),
       ),
@@ -46,12 +63,12 @@ class _header extends StatelessWidget {
           fit: BoxFit.fill,
         ),
         const SizedBox(height: 15.0),
-        const Text(
+        Text(
           "번역할 언어를 선택해 주세요",
           style: textStyle,
         ),
         const SizedBox(height: 5.0),
-        const Text(
+        Text(
           "＊언어를 선택하지 않을 시 자동으로 한국어가 적용됩니다＊",
           style: TextStyle(
             fontSize: 12.0,
@@ -63,6 +80,7 @@ class _header extends StatelessWidget {
     );
   }
 }
+
 
 class _Body extends StatelessWidget {
   _Body({Key? key}) : super(key: key);
@@ -81,14 +99,6 @@ class _Body extends StatelessWidget {
     'thailand.png',
     'uzbekistan.png',
     'vietnam.jpeg',
-  ];
-
-  List<String> languageCode = <String>[
-    'zh',
-    'vi',
-    'th',
-    'uz',
-    'fil',
   ];
 
   @override
@@ -150,10 +160,6 @@ class _LanguageCardState extends State<LanguageCard> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          // shape: RoundedRectangleBorder(
-          //   side: BorderSide(color: Colors.black, width: 1),
-          //   borderRadius: BorderRadius.circular(5),
-          // ),
           onTap: () {
             setState(() {
               slectedIndex = widget.page;
