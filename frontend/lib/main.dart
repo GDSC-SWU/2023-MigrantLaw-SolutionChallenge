@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/settings/language/start_language_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'const/api/translate/api_key.dart';
 import 'const/api/translate/translations.dart';
 
@@ -11,10 +12,28 @@ void main() {
   );
 }
 
-class _APP extends StatelessWidget {
+class _APP extends StatefulWidget {
   const _APP({Key? key}) : super(key: key);
 
+  @override
+  State<_APP> createState() => _APPState();
+}
+
+class _APPState extends State<_APP> {
   final String apiKey = TRANSLATE_API_KEY;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    chooseLanguage = prefs.getString('Language') ?? "ko";
+  }
 
   @override
   Widget build(BuildContext context) {

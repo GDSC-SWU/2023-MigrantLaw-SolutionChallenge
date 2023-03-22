@@ -41,7 +41,7 @@ dependencies:
   google_translator: ^1.0.0
   translator: ^0.1.7
   search_highlight_text: ^1.0.0+2
-
+  shared_preferences: ^2.0.20
 
 dev_dependencies:
   flutter_test:

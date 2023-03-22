@@ -36,7 +36,6 @@ class _SearchLawDetailScreenState extends State<SearchLawDetailScreen> {
     final Uri url = Uri.parse(endPointUrl);
 
     final response = await http.get(url);
-    print("response.body : ${response.body}");
 
     if (response.statusCode == 200) {
       return searchLawFromJson(response.body);

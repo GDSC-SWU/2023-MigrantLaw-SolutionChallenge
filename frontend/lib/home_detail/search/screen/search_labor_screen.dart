@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_translator/google_translator.dart';
+import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import 'package:migrant_law_solutionchallenge/home_detail/search/model/search_law_model.dart';
@@ -20,6 +21,8 @@ const List<Tab> tabs = <Tab>[
   Tab(text: '임금채권보장법'),
   Tab(text: '남녀고용평등'),
 ];
+
+// List<Tab> _translatedTabs = <Tab>[];
 
 class HomeDetailPage extends StatefulWidget {
   final String searchText;
@@ -64,21 +67,35 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   }
 
   late Future<List<SearchLaw>> services;
+
   static String passURL = "";
+  static String errorText = "";
+  String toLanguage = chooseLanguage;
+
+  GoogleTranslator translator = GoogleTranslator();
+
+  void translate() {
+    String text = 'OOPS! No Result...';
+    translator.translate(text, to: toLanguage).then((result) {
+      errorText = result.text;
+    }).catchError((error) {
+      print(error);
+    });
+  }
 
   Future<List<SearchLaw>> fetchData() async {
+
     print("widget.searchText : ${widget.searchText}");
     String endPointUrl = callAPI(tapIndex);
     passURL = endPointUrl;
 
     final Uri url = Uri.parse(endPointUrl);
-
     final response = await http.get(url);
 
     if (response.statusCode == 200 && !response.body.contains("message")) {
       return searchLawFromJson(response.body);
     } else if (response.body.contains("message")) {
-      throw "OOPS! No Result...";
+      throw errorText;
     } else {
       throw Exception("Failed to load Services..");
     }
@@ -87,6 +104,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   @override
   void initState() {
     super.initState();
+    translate();
     callAPI(tapIndex);
     fetchData();
     services = fetchData();

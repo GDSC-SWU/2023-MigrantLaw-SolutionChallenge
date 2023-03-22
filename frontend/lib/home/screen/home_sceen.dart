@@ -107,7 +107,7 @@ class _Body extends StatelessWidget {
   // 텍스트 스타일
   final textStyle = const TextStyle(
     color: Colors.black87,
-    fontSize: 14.0,
+    fontSize: 12.5,
     fontWeight: FontWeight.w700,
   );
 
@@ -174,7 +174,7 @@ class _Body extends StatelessWidget {
                     children: [
                       Image.asset(
                         'assets/images/${imgList[index]}',
-                        height: 37.0,
+                        height: 36.0,
                         fit: BoxFit.cover,
                       ),
                       const SizedBox(height: 10.0),

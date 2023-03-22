@@ -3,6 +3,7 @@ import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:migrant_law_solutionchallenge/home/screen/home_sceen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../main.dart';
 
@@ -21,8 +22,19 @@ List<String> languageCode = <String>[
 ];
 
 @immutable
-class StartLanguageScreen extends StatelessWidget {
+class StartLanguageScreen extends StatefulWidget {
   const StartLanguageScreen({Key? key}) : super(key: key);
+
+  @override
+  State<StartLanguageScreen> createState() => _StartLanguageScreenState();
+}
+
+class _StartLanguageScreenState extends State<StartLanguageScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +121,7 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -141,32 +153,45 @@ class LanguageCard extends StatefulWidget {
 }
 
 class _LanguageCardState extends State<LanguageCard> {
+  List<bool> ifChecked = [false, false, false, false, false];
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 0.0),
-        child: ListTile(
-          leading: Image.asset(
-            'assets/images/country/${widget.countryImg}',
-            height: 25.0,
-            fit: BoxFit.cover,
-          ),
-          title: Text(
-            widget.country,
-            style: const TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w600,
+    return Container(
+      // decoration: BoxDecoration(
+      //   border: Border.all(
+      //     color: ifChecked[selectedIndex] ? PRIMARY_COLOR : Colors.white,
+      //     width: 1.0,
+      //   ),
+      //   borderRadius: BorderRadius.circular(5.0),
+      // ),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 0.0),
+          child: ListTile(
+            leading: Image.asset(
+              'assets/images/country/${widget.countryImg}',
+              height: 25.0,
+              fit: BoxFit.cover,
             ),
+            title: Text(
+              widget.country,
+              style: const TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            onTap: () async {
+              //await Translation.loadData();
+              setState(() {
+                selectedIndex = widget.page;
+                chooseLanguage = languageCode[selectedIndex];
+              });
+              await Translation.saveData(languageCode[selectedIndex]);
+              RestartWidget.restartApp(context);
+            },
           ),
-          onTap: () {
-            setState(() {
-              selectedIndex = widget.page;
-              chooseLanguage = languageCode[selectedIndex];
-            });
-          },
         ),
       ),
     );
@@ -179,7 +204,7 @@ class _bottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+      padding: const EdgeInsets.symmetric(horizontal: 3.0),
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushAndRemoveUntil(
