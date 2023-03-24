@@ -22,6 +22,8 @@ const List<Tab> tabs = <Tab>[
   Tab(text: '남녀고용평등'),
 ];
 
+List<Tab> translatedTabs = <Tab>[];
+
 class HomeDetailPage extends StatefulWidget {
   final String searchText;
 
@@ -34,13 +36,15 @@ class HomeDetailPage extends StatefulWidget {
   State<HomeDetailPage> createState() => _HomeDetailPageState();
 }
 
-class _HomeDetailPageState extends State<HomeDetailPage> {
+class _HomeDetailPageState extends State<HomeDetailPage> with SingleTickerProviderStateMixin{
 
   final subTextStyle = const TextStyle(
       color: SECONDARY_COLOR1, fontSize: 23, fontWeight: FontWeight.w800);
 
   final mainTextStyle = const TextStyle(
       color: PRIMARY_COLOR, fontSize: 23, fontWeight: FontWeight.w800);
+
+  GoogleTranslator translator = GoogleTranslator();
 
   dynamic callAPI(int tab, String text) {
     switch (tab) {
@@ -85,10 +89,22 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
     }
   }
 
+  // Tab 변역하기
+  void _translateTabs() async {
+
+    final List<Translation> translations = await Future.wait(
+        tabs.map((Tab tab) => translator.translate(tab.text!, to: getLanguage))
+    );
+
+    setState(() {
+      translatedTabs = translations.map((Translation translation) {
+        return Tab(text: translation.text);
+      }).toList();
+    });
+  }
+
   // 로딩 변수
   bool isLoading = true;
-
-  GoogleTranslator translator = GoogleTranslator();
 
   Future<void> initTranslations() async {
     setState(() {
@@ -115,20 +131,12 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
     setState(() {
       isLoading = false;
     });
-
-    final tabTranslations = await Future.wait(
-      tabs.map((tab) => translator.translate(tab.text!, to: getLanguage)),
-    );
-    setState(() {
-      for (int i = 0; i < tabs.length; i++) {
-        tabs[i] = Tab(text: tabTranslations[i].text);
-      }
-    });
   }
 
   @override
   void initState() {
     super.initState();
+    _translateTabs();
     initTranslations();
   }
 
@@ -141,7 +149,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return DefaultTabController(
-      length: tabs.length,
+      length: translatedTabs.length,
       initialIndex: 0,
       child: Scaffold(
           backgroundColor: BODY_TEXT_COLOR,
@@ -173,7 +181,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
         fontWeight: FontWeight.w500,
       ),
       isScrollable: true,
-      tabs: tabs,
+      tabs: translatedTabs,
       onTap: (index) {
         tabIndex = index;
         setState(() {
@@ -225,7 +233,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
           );
         }
         return TabBarView(
-          children: tabs.map(
+          children: translatedTabs.map(
             (Tab tab) {
               return Padding(
                 padding:

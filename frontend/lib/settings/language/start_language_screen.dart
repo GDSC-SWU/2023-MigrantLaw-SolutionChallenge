@@ -3,8 +3,6 @@ import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:migrant_law_solutionchallenge/home/screen/home_sceen.dart';
-
-import '../../home/widget/home_searchbar.dart';
 import '../../home_detail/search/screen/search_labor_screen.dart';
 import '../../main.dart';
 
@@ -156,8 +154,6 @@ class LanguageCard extends StatefulWidget {
 class _LanguageCardState extends State<LanguageCard> {
 
   final translation = TranslationLanguage();
-
-  // List<bool> ifChecked = [false, false, false, false, false];
   int selectedIndex = 0;
 
   @override
@@ -186,7 +182,6 @@ class _LanguageCardState extends State<LanguageCard> {
               translation.saveData(languageCode[selectedIndex]);
               translation.loadData();
               getLanguage = languageCode[selectedIndex];
-
             });
           },
         ),
