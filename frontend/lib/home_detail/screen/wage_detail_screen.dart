@@ -34,6 +34,7 @@ class _WageDetailScreenState extends State<WageDetailScreen> {
   late ScrollController _scrollController;
 
   Future<WageServices> fetchData() async {
+    WidgetsFlutterBinding.ensureInitialized();
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

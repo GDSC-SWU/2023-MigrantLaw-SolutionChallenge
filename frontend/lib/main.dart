@@ -21,15 +21,16 @@ class _APP extends StatefulWidget {
 
 class _APPState extends State<_APP> {
   final String apiKey = TRANSLATE_API_KEY;
+  late final String choiceLng;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    loadData();
+    loadDatas();
   }
 
-  loadData() async {
+  loadDatas() async {
     SharedPreferences.setMockInitialValues({});
     final prefs = await SharedPreferences.getInstance();
     chooseLanguage = prefs.getString('Language') ?? "ko";
@@ -41,7 +42,7 @@ class _APPState extends State<_APP> {
       translateFrom: const Locale('ko'),
       translateTo: Locale(chooseLanguage),
       automaticDetection: true,
-      cacheDuration: const Duration(days: 3),
+      cacheDuration: const Duration(days: 100),
       builder: () => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

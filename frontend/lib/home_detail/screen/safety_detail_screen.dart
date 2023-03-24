@@ -34,6 +34,7 @@ class _SafetyDetailScreenState extends State<SafetyDetailScreen> {
   late ScrollController _scrollController;
 
   Future<SafetyServices> fetchData() async {
+    WidgetsFlutterBinding.ensureInitialized();
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

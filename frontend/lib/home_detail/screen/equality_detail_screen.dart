@@ -34,6 +34,7 @@ class _EqualityDetailScreenState extends State<EqualityDetailScreen> {
   late ScrollController _scrollController;
 
   Future<EqualityServices> fetchData() async {
+    WidgetsFlutterBinding.ensureInitialized();
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:translator/translator.dart';
 
@@ -14,6 +13,7 @@ class HomeSearchBar extends StatefulWidget {
 }
 
 class _HomeSearchBarState extends State<HomeSearchBar> {
+
   final translator = GoogleTranslator();
   String text = '';
 
@@ -76,7 +76,7 @@ class SearchTextField extends StatelessWidget {
           fieldValue('The text has changed to: $value');
         },
         onSubmitted: (String value) {
-          fieldValue('Submitted text: $value');
+          fieldValue('Submitted Translator text: $value');
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (BuildContext context) {
             return HomeDetailPage(

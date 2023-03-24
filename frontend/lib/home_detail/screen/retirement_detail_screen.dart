@@ -35,6 +35,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
   late ScrollController _scrollController;
 
   Future<RetirementServices> fetchData() async {
+    WidgetsFlutterBinding.ensureInitialized();
     final response = await http.get(url);
 
     if (response.statusCode == 200) {

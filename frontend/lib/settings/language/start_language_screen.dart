@@ -3,8 +3,9 @@ import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:migrant_law_solutionchallenge/home/screen/home_sceen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../home/widget/home_searchbar.dart';
+import '../../home_detail/search/screen/search_labor_screen.dart';
 import '../../main.dart';
 
 const textStyle = TextStyle(
@@ -153,45 +154,41 @@ class LanguageCard extends StatefulWidget {
 }
 
 class _LanguageCardState extends State<LanguageCard> {
-  List<bool> ifChecked = [false, false, false, false, false];
+
+  final translation = TranslationLanguage();
+
+  // List<bool> ifChecked = [false, false, false, false, false];
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // decoration: BoxDecoration(
-      //   border: Border.all(
-      //     color: ifChecked[selectedIndex] ? PRIMARY_COLOR : Colors.white,
-      //     width: 1.0,
-      //   ),
-      //   borderRadius: BorderRadius.circular(5.0),
-      // ),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 0.0),
-          child: ListTile(
-            leading: Image.asset(
-              'assets/images/country/${widget.countryImg}',
-              height: 25.0,
-              fit: BoxFit.cover,
-            ),
-            title: Text(
-              widget.country,
-              style: const TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            onTap: () async {
-              //await Translation.loadData();
-              setState(() {
-                selectedIndex = widget.page;
-                chooseLanguage = languageCode[selectedIndex];
-              });
-              await Translation.saveData(languageCode[selectedIndex]);
-              RestartWidget.restartApp(context);
-            },
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 0.0),
+        child: ListTile(
+          leading: Image.asset(
+            'assets/images/country/${widget.countryImg}',
+            height: 25.0,
+            fit: BoxFit.cover,
           ),
+          title: Text(
+            widget.country,
+            style: const TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          onTap: () async {
+            setState(() {
+              selectedIndex = widget.page;
+              chooseLanguage = languageCode[selectedIndex];
+              RestartWidget.restartApp(context);
+              translation.saveData(languageCode[selectedIndex]);
+              translation.loadData();
+              getLanguage = languageCode[selectedIndex];
+
+            });
+          },
         ),
       ),
     );
