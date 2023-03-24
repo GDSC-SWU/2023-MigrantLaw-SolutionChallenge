@@ -101,6 +101,11 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
       translateText = translationResult.text;
     });
 
+    final translateErrorText = await translator.translate(errorText, to: getLanguage);
+    setState(() {
+      errorText = translateErrorText.text;
+    });
+
     fetchData();
 
     services = fetchData();
