@@ -1,5 +1,7 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import '../../const/color.dart';
+import 'camera_page.dart';
 
 class ContractSceen extends StatelessWidget {
   const ContractSceen({Key? key}) : super(key: key);
@@ -100,11 +102,16 @@ class _Body extends StatelessWidget {
         Card(
           color: PRIMARY_COLOR,
           clipBehavior: Clip.antiAlias,
-          child: InkWell(
-            splashColor: SECONDARY_COLOR1.withAlpha(30),
-            onTap: () {
-              debugPrint('촬영 tapped.');
+          child: ElevatedButton(
+            onPressed: () async {
+              await availableCameras().then((value) => Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => CameraPage(cameras: value))));
             },
+            // InkWell(
+            //   splashColor: SECONDARY_COLOR1.withAlpha(30),
+            //   onTap: () {
+            //     debugPrint('촬영 tapped.');
+            //   },
             child: const SizedBox(
               width: 230,
               height: 150,
