@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_translator/google_translator.dart';
 
 import '../../const/color.dart';
 import 'package:http/http.dart' as http;
@@ -34,6 +35,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
   late ScrollController _scrollController;
 
   Future<RetirementServices> fetchData() async {
+    WidgetsFlutterBinding.ensureInitialized();
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -129,7 +131,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                         Text(
                           snapshot.data!.empty.purple.tentacled.cdata,
                           style: subTextStyle,
-                        ),
+                        ).translate(),
                         const SizedBox(height: 3.0),
                         Text(
                           "시행일자 : ${snapshot.data!.empty.purple.cunning.text}",
@@ -137,7 +139,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                             fontSize: 14.0,
                             fontWeight: FontWeight.w700,
                           ),
-                        ),
+                        ).translate(),
                         const SizedBox(height: 5.0),
                         ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
@@ -161,7 +163,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                                             snapshot.data!.empty.sticky
                                                 .empty[index].purple.cdata,
                                             style: mainTextStyle.copyWith(
-                                                fontSize: 19.0)),
+                                                fontSize: 19.0)).translate(),
                                       ),
                                     ] else
                                       ...[
@@ -172,7 +174,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                                             fontWeight: FontWeight.w700,
                                             fontSize: 16.0,
                                           ),
-                                        ),
+                                        ).translate(),
                                         const SizedBox(height: 5.0),
                                         Text(
                                           snapshot.data!.empty.sticky.empty[index]
@@ -182,7 +184,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                                                 .darkBackgroundGray,
                                             fontSize: 14.0,
                                           ),
-                                        ),
+                                        ).translate(),
                                         const SizedBox(height: 5.0),
                                         if (snapshot.data!.empty.sticky
                                             .empty[index].magenta !=
@@ -210,7 +212,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                                                   .empty
                                                   .sticky
                                                   .empty[index]
-                                                  .magenta[i]?["항내용"]["_cdata"].toString() ?? ""),
+                                                  .magenta[i]?["항내용"]["_cdata"].toString() ?? "").translate(),
                                             ],
                                             const SizedBox(height: 4.0),
                                             if (snapshot
@@ -237,7 +239,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                                                     .empty[index]
                                                     .magenta[i]?["호"][j]
                                                 ["호내용"]["_cdata"] ??
-                                                    ""),
+                                                    "").translate(),
                                                 const SizedBox(height: 4.0),
                                               ]
                                             ],
@@ -255,7 +257,7 @@ class _RetirementDetailScreenState extends State<RetirementDetailScreen> {
                                                   .darkBackgroundGray,
                                               fontSize: 14.0,
                                             ),
-                                          ),
+                                          ).translate(),
                                         ],
                                       ],
                                   ],

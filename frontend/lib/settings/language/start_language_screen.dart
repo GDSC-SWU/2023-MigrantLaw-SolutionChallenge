@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_translator/google_translator.dart';
+import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 import 'package:migrant_law_solutionchallenge/home/screen/home_sceen.dart';
-import 'package:translator/translator.dart';
+import '../../home_detail/search/screen/search_labor_screen.dart';
+import '../../main.dart';
 
 const textStyle = TextStyle(
   fontSize: 24.0,
@@ -18,31 +20,37 @@ List<String> languageCode = <String>[
   'en',
 ];
 
-translate(String inputText) {
-  final translator = GoogleTranslator();
-  String input = inputText;
-  var translation = translator.translate(input, from: 'ko', to: 'en');
-  return translation;
+@immutable
+class StartLanguageScreen extends StatefulWidget {
+  const StartLanguageScreen({Key? key}) : super(key: key);
+
+  @override
+  State<StartLanguageScreen> createState() => _StartLanguageScreenState();
 }
 
-@immutable
-class StartLanguageScreen extends StatelessWidget {
-  const StartLanguageScreen({Key? key}) : super(key: key);
+class _StartLanguageScreenState extends State<StartLanguageScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 120.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _header(),
-            const SizedBox(height: 20.0),
-            _Body(),
-            const SizedBox(height: 30.0),
-            _bottom(),
-          ],
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 100.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              _header(),
+              const SizedBox(height: 20.0),
+              _Body(),
+              const SizedBox(height: 30.0),
+              const _bottom(),
+            ],
+          ),
         ),
       ),
     );
@@ -63,19 +71,19 @@ class _header extends StatelessWidget {
           fit: BoxFit.fill,
         ),
         const SizedBox(height: 15.0),
-        Text(
+        const Text(
           "번역할 언어를 선택해 주세요",
           style: textStyle,
-        ),
+        ).translate(),
         const SizedBox(height: 5.0),
-        Text(
+        const Text(
           "＊언어를 선택하지 않을 시 자동으로 한국어가 적용됩니다＊",
           style: TextStyle(
             fontSize: 12.0,
             fontWeight: FontWeight.w500,
             color: PRIMARY_COLOR,
           ),
-        ),
+        ).translate(),
       ],
     );
   }
@@ -90,29 +98,33 @@ class _Body extends StatelessWidget {
     "Việt Nam",
     "ไทย",
     "O'zbekiston",
-    "Republika ng Pilipinas",
+    "English",
   ];
 
   final imgList = <String>[
     'china.jpg',
-    'philippines.jpeg',
+    'vietnam.jpeg',
     'thailand.png',
     'uzbekistan.png',
-    'vietnam.jpeg',
+    'USA.jpg'
+  ];
+
+  List<String> languageCode = <String>[
+    'zh-tw',
+    'vi',
+    'th',
+    'uz',
+    'en',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          LanguageCard(
-            country: country[0],
-            countryImg: imgList[0],
-            page: 0,
-          ),
+          LanguageCard(country: country[0], countryImg: imgList[0], page: 0),
           LanguageCard(country: country[1], countryImg: imgList[1], page: 1),
           LanguageCard(country: country[2], countryImg: imgList[2], page: 2),
           LanguageCard(country: country[3], countryImg: imgList[3], page: 3),
@@ -140,7 +152,9 @@ class LanguageCard extends StatefulWidget {
 }
 
 class _LanguageCardState extends State<LanguageCard> {
-  int slectedIndex = 0;
+
+  final translation = TranslationLanguage();
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -160,9 +174,14 @@ class _LanguageCardState extends State<LanguageCard> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          onTap: () {
+          onTap: () async {
             setState(() {
-              slectedIndex = widget.page;
+              selectedIndex = widget.page;
+              chooseLanguage = languageCode[selectedIndex];
+              RestartWidget.restartApp(context);
+              translation.saveData(languageCode[selectedIndex]);
+              translation.loadData();
+              getLanguage = languageCode[selectedIndex];
             });
           },
         ),
@@ -177,7 +196,7 @@ class _bottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 3.0),
       child: ElevatedButton(
         onPressed: () {
           Navigator.pushAndRemoveUntil(
@@ -197,7 +216,7 @@ class _bottom extends StatelessWidget {
         ),
         child: const Text(
           "다음",
-        ),
+        ).translate(),
       ),
     );
   }

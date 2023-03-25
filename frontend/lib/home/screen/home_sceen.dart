@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/home_detail/screen/equality_detail_screen.dart';
 import '../../const/color.dart';
 import '../../home_detail/screen/employment_detail_screen.dart';
@@ -7,6 +8,7 @@ import '../../home_detail/screen/labor_detail_screen.dart';
 import '../../home_detail/screen/retirement_detail_screen.dart';
 import '../../home_detail/screen/safety_detail_screen.dart';
 import '../../home_detail/screen/wage_detail_screen.dart';
+import '../../main.dart';
 import '../widget/home_searchbar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,6 +25,7 @@ class HomeScreen extends StatelessWidget {
             IconButton(
               onPressed: () {
                 print("language icon clicked");
+                RestartWidget.restartApp(context);
               },
               icon: const Icon(Icons.language),
             ),
@@ -39,7 +42,7 @@ class HomeScreen extends StatelessWidget {
           title: const Padding(
             padding: EdgeInsets.only(left: 5.0),
             child: Text(
-              "Law4you",
+              "Lawpedia",
               style: TextStyle(
                 fontSize: 23.0,
                 fontWeight: FontWeight.w800,
@@ -83,27 +86,18 @@ class _Head extends StatelessWidget {
           right: 27.0, left: 27.0, top: 5.0, bottom: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: const [
-          Text(
+        children: [
+          const Text(
             "Hello\nmy neighbor",
             style: TextStyle(
               color: PRIMARY_COLOR,
               fontSize: 35.0,
               fontWeight: FontWeight.w700,
             ),
-          ),
+          ).translate(),
         ],
       ),
     );
-  }
-}
-
-class BlankContainer extends StatelessWidget {
-  const BlankContainer({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
 
@@ -113,7 +107,7 @@ class _Body extends StatelessWidget {
   // 텍스트 스타일
   final textStyle = const TextStyle(
     color: Colors.black87,
-    fontSize: 15.0,
+    fontSize: 12.5,
     fontWeight: FontWeight.w700,
   );
 
@@ -123,7 +117,7 @@ class _Body extends StatelessWidget {
     '산재보험',
     '퇴직급여법',
     '임금채권\n보장법',
-    '남녀고용평등과\n일·가정 양입 지원',
+    '남녀고용평등',
   ];
 
   final imgList = <String>[
@@ -155,7 +149,7 @@ class _Body extends StatelessWidget {
         color: SECONDARY_COLOR4,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 45.0, bottom: 0.0),
+        padding: const EdgeInsets.only(top: 70.0, bottom: 0.0),
         child: GridView.count(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -175,25 +169,23 @@ class _Body extends StatelessWidget {
                       return _navigationList[index];
                     }));
                   },
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/images/${imgList[index]}',
-                          height: 37.0,
-                          fit: BoxFit.cover,
-                        ),
-                        const SizedBox(height: 10.0),
-                        Text(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/${imgList[index]}',
+                        height: 36.0,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(height: 10.0),
+                      Expanded(
+                        child: Text(
                           cardNameList[index],
                           textAlign: TextAlign.center,
                           style: textStyle,
-                        ),
-                      ],
-                    ),
+                        ).translate(),
+                      ),
+                    ],
                   ),
                 ),
               );
@@ -217,15 +209,15 @@ class _Bottom extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(
-            children: const [
-              Text(
+            children: [
+              const Text(
                 " 자주 찾아 보는 법률 ",
                 style: TextStyle(
                   color: PRIMARY_COLOR,
                   fontSize: 20.0,
                   fontWeight: FontWeight.w800,
                 ),
-              ),
+              ).translate(),
             ],
           ),
           const SizedBox(height: 14.0),

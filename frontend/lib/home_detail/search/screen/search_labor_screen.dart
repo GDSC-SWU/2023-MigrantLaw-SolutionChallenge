@@ -1,14 +1,17 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import 'package:migrant_law_solutionchallenge/home_detail/search/model/search_law_model.dart';
 import 'package:migrant_law_solutionchallenge/home_detail/search/screen/search_labor_detail_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:translator/translator.dart';
 
 import '../../const/api.dart';
 import 'package:http/http.dart' as http;
+
+String getLanguage = "ko";
 
 const List<Tab> tabs = <Tab>[
   Tab(text: '근로기준법'),
@@ -18,6 +21,8 @@ const List<Tab> tabs = <Tab>[
   Tab(text: '임금채권보장법'),
   Tab(text: '남녀고용평등'),
 ];
+
+List<Tab> translatedTabs = <Tab>[];
 
 class HomeDetailPage extends StatefulWidget {
   final String searchText;
@@ -31,7 +36,7 @@ class HomeDetailPage extends StatefulWidget {
   State<HomeDetailPage> createState() => _HomeDetailPageState();
 }
 
-class _HomeDetailPageState extends State<HomeDetailPage> {
+class _HomeDetailPageState extends State<HomeDetailPage> with SingleTickerProviderStateMixin{
 
   final subTextStyle = const TextStyle(
       color: SECONDARY_COLOR1, fontSize: 23, fontWeight: FontWeight.w800);
@@ -39,79 +44,130 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
   final mainTextStyle = const TextStyle(
       color: PRIMARY_COLOR, fontSize: 23, fontWeight: FontWeight.w800);
 
-  int tapIndex = 0;
-  bool changed = false;
+  GoogleTranslator translator = GoogleTranslator();
 
-  dynamic callAPI(int tab) {
-    switch(tab) {
-      case 0 :
-        return API().getLaborSearchUrl(widget.searchText);
+  dynamic callAPI(int tab, String text) {
+    switch (tab) {
+      case 0:
+        return API().getLaborSearchUrl(text);
       case 1:
-        return API().getEmploymentSearchUrl(widget.searchText);
+        return API().getEmploymentSearchUrl(text);
       case 2:
-        return API().getSafetySearchUrl(widget.searchText);
+        return API().getSafetySearchUrl(text);
       case 3:
-        return API().getRetirementSearchUrl(widget.searchText);
+        return API().getRetirementSearchUrl(text);
       case 4:
-        return API().getWageSearchUrl(widget.searchText);
+        return API().getWageSearchUrl(text);
       case 5:
-        return API().getEqualitySearchUrl(widget.searchText);
+        return API().getEqualitySearchUrl(text);
       default:
-        return API().getEmploymentSearchUrl(widget.searchText);
+        return API().getEmploymentSearchUrl(text);
     }
   }
 
+  int tabIndex = 0;
+
   late Future<List<SearchLaw>> services;
+  late String translateText;
+
   static String passURL = "";
+  static String errorText = "OOPS! 검색 결과가 없습니다...";
 
   Future<List<SearchLaw>> fetchData() async {
-    print("widget.searchText : ${widget.searchText}");
-    String endPointUrl = callAPI(tapIndex);
+    String endPointUrl = callAPI(tabIndex, translateText);
     passURL = endPointUrl;
 
     final Uri url = Uri.parse(endPointUrl);
-
     final response = await http.get(url);
-    print("response.body : ${response.body}");
 
     if (response.statusCode == 200 && !response.body.contains("message")) {
       return searchLawFromJson(response.body);
     } else if (response.body.contains("message")) {
-      throw "OOPS! 검색 결과가 없습니다..";
+      throw errorText;
     } else {
       throw Exception("Failed to load Services..");
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    callAPI(tapIndex);
+  // Tab 변역하기
+  void _translateTabs() async {
+
+    final List<Translation> translations = await Future.wait(
+        tabs.map((Tab tab) => translator.translate(tab.text!, to: getLanguage))
+    );
+
+    setState(() {
+      translatedTabs = translations.map((Translation translation) {
+        return Tab(text: translation.text);
+      }).toList();
+    });
+  }
+
+  // 로딩 변수
+  bool isLoading = true;
+
+  Future<void> initTranslations() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    final translationResult =
+        await translator.translate(widget.searchText, to: 'ko');
+    setState(() {
+      translateText = translationResult.text;
+    });
+
+    final translateErrorText = await translator.translate(errorText, to: getLanguage);
+    setState(() {
+      errorText = translateErrorText.text;
+    });
+
     fetchData();
+
     services = fetchData();
+
+    callAPI(tabIndex, translateText);
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
-  void dispose() {// dispose the controller
+  void initState() {
+    super.initState();
+    _translateTabs();
+    initTranslations();
+  }
+
+  @override
+  void dispose() {
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return DefaultTabController(
-      length: tabs.length,
+      length: translatedTabs.length,
       initialIndex: 0,
-      child: Scaffold (
-        backgroundColor: BODY_TEXT_COLOR,
+      child: Scaffold(
+          backgroundColor: BODY_TEXT_COLOR,
           appBar: AppBar(
-            title: Text("'${widget.searchText}' 검색결과"),
+            title: Text("'${widget.searchText}' 검색결과").translate(),
             centerTitle: true,
             backgroundColor: PRIMARY_COLOR,
             bottom: buildTabBar(),
           ),
-          body: searchFutureBuilder()),
+          body: isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      PRIMARY_COLOR,
+                    ),
+                  ),
+                )
+              : searchFutureBuilder()),
     );
   }
 
@@ -125,9 +181,9 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
         fontWeight: FontWeight.w500,
       ),
       isScrollable: true,
-      tabs: tabs,
+      tabs: translatedTabs,
       onTap: (index) {
-        tapIndex = index;
+        tabIndex = index;
         setState(() {
           fetchData();
           services = fetchData();
@@ -177,7 +233,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
           );
         }
         return TabBarView(
-          children: tabs.map(
+          children: translatedTabs.map(
             (Tab tab) {
               return Padding(
                 padding:
@@ -190,7 +246,6 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                           bottom: 2.0, top: 2.0, left: 2.0, right: 2.0),
                       child: InkWell(
                         onTap: () {
-                          print(position);
                           // 어떤 카드인지 식별 인덱스
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) {
@@ -222,7 +277,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                                     color: Color(0xFF212121),
                                     fontWeight: FontWeight.w500,
                                   ),
-                                ),
+                                ).translate(),
                               ],
                             ),
                           ),

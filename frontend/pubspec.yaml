@@ -41,7 +41,7 @@ dependencies:
   google_translator: ^1.0.0
   translator: ^0.1.7
   search_highlight_text: ^1.0.0+2
-
+  shared_preferences: ^2.0.20
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +80,7 @@ flutter:
     - assets/images/country/thailand.png
     - assets/images/country/uzbekistan.png
     - assets/images/country/vietnam.jpeg
+    - assets/images/country/USA.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

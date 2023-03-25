@@ -32,7 +32,6 @@ class API {
   }
 
   String getLaborSearchUrl(String data) {
-    print("getLaborSearchUrl : $DOMAIN_URL$LABOR_LAW_SEARCH$data");
     return "$DOMAIN_URL$LABOR_LAW_SEARCH$data";
   }
 
@@ -41,7 +40,6 @@ class API {
   }
 
   String getEmploymentSearchUrl(String data) {
-    print("getEmploymentSearchUrl : $DOMAIN_URL$EMPLOYMENT_LAW_SEARCH$data");
     return "$DOMAIN_URL$EMPLOYMENT_LAW_SEARCH$data";
   }
 
@@ -50,7 +48,6 @@ class API {
   }
 
   String getSafetySearchUrl(String data) {
-    print("getSafetySearchUrl : $DOMAIN_URL$SAFETY_LAW_SEARCH$data");
     return "$DOMAIN_URL$SAFETY_LAW_SEARCH$data";
   }
 
@@ -59,7 +56,6 @@ class API {
   }
 
   String getRetirementSearchUrl(String data){
-    print("getRetirementSearchUrl : $DOMAIN_URL$RETIREMENT_LAW_SEARCH$data");
     return "$DOMAIN_URL$RETIREMENT_LAW_SEARCH$data";
   }
 
@@ -68,7 +64,6 @@ class API {
   }
 
   String getEqualitySearchUrl(String data) {
-    print("getEqualitySearchUrl : $DOMAIN_URL$EQUALITY_LAW_SEARCH$data");
     return "$DOMAIN_URL$EQUALITY_LAW_SEARCH$data";
   }
 
@@ -77,7 +72,6 @@ class API {
   }
 
   String getWageSearchUrl(String data) {
-    print("getWageSearchUrl : $DOMAIN_URL$WAGE_LAW_SEARCH$data");
     return "$DOMAIN_URL$WAGE_LAW_SEARCH$data";
   }
 }
