@@ -19,7 +19,7 @@ class ContractSceen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 70.0,
+            horizontal: 50.0,
             vertical: 80.0,
           ),
           child: Container(
@@ -78,7 +78,7 @@ class _Body extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Card(
-          color: PRIMARY_COLOR,
+          color: Color(0x82043F99),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
             splashColor: SECONDARY_COLOR1.withAlpha(30),
@@ -107,10 +107,10 @@ class _Body extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 15.0,
-                  vertical: 35.0,
+                  vertical: 60.0,
                 ),
                 child: Text(
-                  "계약서 내용 입력 및 사진 업로드",
+                  "계약서 사진 업로드",
                   style: TextStyle(
                     fontSize: 25.0,
                     color: BODY_TEXT_COLOR,
@@ -122,7 +122,7 @@ class _Body extends StatelessWidget {
           ),
         ),
         Card(
-          color: PRIMARY_COLOR,
+          color: Color(0x82043F99),
           clipBehavior: Clip.antiAlias,
           child: ElevatedButton(
             onPressed: () async {
@@ -159,6 +159,7 @@ class _Body extends StatelessWidget {
                   horizontal: 25.0,
                   vertical: 35.0,
                 ),
+
                 child: Text(
                   "계약서 촬영해서 알아보기",
                   style: TextStyle(
@@ -168,6 +169,7 @@ class _Body extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
+
             ),
           ),
         ),

@@ -19,7 +19,7 @@ class DownloadFileScreen extends StatelessWidget {
             color: PRIMARY_COLOR,
           ),
           foregroundColor: PRIMARY_COLOR,
-          backgroundColor: BODY_TEXT_COLOR,
+          backgroundColor: Colors.white12,
           title: const Padding(
             padding: EdgeInsets.only(left: 5.0),
             child: Text(
@@ -111,7 +111,7 @@ class DownloadFileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 25.0),
+                  const SizedBox(height: 40.0),
                   Row(
                     children: const [
                       Text(
