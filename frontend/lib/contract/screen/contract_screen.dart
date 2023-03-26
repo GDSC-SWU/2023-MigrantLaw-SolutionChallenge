@@ -103,28 +103,29 @@ class _Body extends StatelessWidget {
             },
             child: const SizedBox(
               width: 230,
-              height: 150,
+              height: 140,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: 15.0,
-                  vertical: 60.0,
+                  vertical: 40.0,
                 ),
-                child: Text(
-                  "계약서 사진 업로드",
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: BODY_TEXT_COLOR,
-                  ),
-                  textAlign: TextAlign.center,
+                child: Icon(
+                  Icons.photo_library_rounded,
+                  size: 70,
+                  color: Colors.white,
                 ),
               ),
             ),
           ),
         ),
+        SizedBox(height: 10),
         Card(
-          color: Color(0x82043F99),
+          // color: Color(0x82043F99),
           clipBehavior: Clip.antiAlias,
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              primary: Color(0x82043F99), // Background color
+            ),
             onPressed: () async {
               log("Camera");
               pickImage(source: ImageSource.camera).then((value) {
@@ -153,20 +154,17 @@ class _Body extends StatelessWidget {
             //   },
             child: const SizedBox(
               width: 230,
-              height: 150,
+              height: 140,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 25.0,
-                  vertical: 35.0,
+                  horizontal: 15.0,
+                  vertical: 40.0,
                 ),
 
-                child: Text(
-                  "계약서 촬영해서 알아보기",
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: BODY_TEXT_COLOR,
-                  ),
-                  textAlign: TextAlign.center,
+                child: Icon(
+                  Icons.photo_camera,
+                  size: 70,
+                  color: Colors.white,
                 ),
               ),
 
