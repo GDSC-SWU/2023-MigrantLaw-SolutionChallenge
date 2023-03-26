@@ -35,8 +35,75 @@ class DownloadFileScreen extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           slivers: <Widget>[
             SliverToBoxAdapter(
-              child: SafeArea(
-                child: Text("an unknown\namount of content\n goes here in the header"),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 15.0),
+                  Row(
+                    children: const [
+                      Text(
+                        " honey tip! ",
+                        style: TextStyle(
+                          color: PRIMARY_COLOR,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 5.0),
+                  Row(
+                    children: const [
+                      Text(
+                        " 노동자권리수첩 pdf ",
+                        style: TextStyle(
+                          color: PRIMARY_COLOR,
+                          fontSize: 11.0,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 3.0),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Card(
+                          color: Colors.white24,
+                          clipBehavior: Clip.hardEdge,
+                          child: InkWell(
+                            splashColor: Colors.blue.withAlpha(30),
+                            onTap: () {
+                              debugPrint('Card1 tapped.');
+                            },
+                            child: const SizedBox(
+                              width: 196,
+                              height: 128,
+                              child: Text(''),
+                            ),
+                          ),
+                        ),
+                        Card(
+                          color: Colors.white24,
+                          clipBehavior: Clip.hardEdge,
+                          child: InkWell(
+                            splashColor: Colors.blue.withAlpha(30),
+                            onTap: () {
+                              debugPrint('Card2 tapped.');
+                            },
+                            child: const SizedBox(
+                              width: 196,
+                              height: 128,
+                              child: Text(""),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
             SliverToBoxAdapter(
