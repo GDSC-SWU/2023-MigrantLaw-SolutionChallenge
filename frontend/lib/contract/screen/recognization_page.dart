@@ -30,7 +30,7 @@ class _RecognizePageState extends State<RecognizePage> {
   void initState() {
 
     _translation = Translation(
-      apiKey: 'AIzaSyDyPVticF6oPvvlMV3nZdvjID7zysXpttc',
+      apiKey: "AIzaSyB9HaebLTFdtIpBfEv_h127wKvd5ycstrE",
     );
 
     super.initState();
