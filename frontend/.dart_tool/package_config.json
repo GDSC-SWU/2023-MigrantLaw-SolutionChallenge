@@ -242,6 +242,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "html_unescape",
+      "rootUri": "file:///Users/nayeon/.pub-cache/hosted/pub.dev/html_unescape-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http",
       "rootUri": "file:///Users/nayeon/.pub-cache/hosted/pub.dev/http-0.13.5",
       "packageUri": "lib/",
@@ -638,7 +644,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-03-26T00:59:58.564190Z",
+  "generated": "2023-03-26T11:43:09.773713Z",
   "generator": "pub",
   "generatorVersion": "2.19.0"
 }
