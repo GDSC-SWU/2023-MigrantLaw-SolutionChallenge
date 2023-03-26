@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../const/color.dart';
 import '../Utils/image_cropper_page.dart';
@@ -46,23 +47,23 @@ class _Top extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           "계약서 알아보기",
           style: TextStyle(
             color: Colors.black,
             fontSize: 35,
             fontWeight: FontWeight.w500,
           ),
-        ),
+        ).translate(),
         const SizedBox(height: 8.0),
-        Text(
+        const Text(
           "어떤걸 원하나요?",
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w400,
             color: Colors.grey,
           ),
-        ),
+        ).translate(),
       ],
     );
   }

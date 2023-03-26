@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:translator/translator.dart';
 import '../../const/color.dart';
 import '../../contract/screen/contract_screen.dart';
 import '../../download_file/screen/download_file.dart';
 import 'home_sceen.dart';
+
+String getNavLanguage = "ko";
 
 // 네비게이션으로 화면 이동
 class NavigationScreen extends StatefulWidget {
@@ -14,6 +17,33 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen> {
   int currentIndex = 0;
+  GoogleTranslator translator = GoogleTranslator();
+
+  List<String> translatedNav = <String>[
+    "홈",
+    "검색",
+    "계약서"
+  ];
+
+  // 네비게이션 변역하기
+  void _translateNav() async {
+
+    final List<Translation> translations = await Future.wait(
+        translatedNav.map((String tab) => translator.translate(tab, to: getNavLanguage))
+    );
+
+    setState(() {
+      translatedNav = translations.map((Translation translation) {
+        return translation.text;
+      }).toList();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _translateNav();
+  }
 
   // 네비게이션 탭 화면
   final List<Widget> _widgetOptions = <Widget>[
@@ -46,18 +76,18 @@ class _NavigationScreenState extends State<NavigationScreen> {
         });
       },
       currentIndex: currentIndex,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          label: "홈",
-          icon: Icon(Icons.home),
+          icon: const Icon(Icons.home),
+          label: translatedNav[0],
         ),
         BottomNavigationBarItem(
-          label: "검색",
-          icon: Icon(Icons.search),
+          icon: const Icon(Icons.search),
+          label: translatedNav[1],
         ),
         BottomNavigationBarItem(
-          label: "계약서",
-          icon: Icon(Icons.camera_alt),
+          icon: const Icon(Icons.camera_alt),
+          label: translatedNav[2],
         ),
       ],
     );

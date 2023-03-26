@@ -24,7 +24,6 @@ class HomeScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                print("language icon clicked");
                 RestartWidget.restartApp(context);
               },
               icon: const Icon(Icons.language),

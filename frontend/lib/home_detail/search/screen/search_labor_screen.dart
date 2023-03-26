@@ -5,7 +5,6 @@ import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import 'package:migrant_law_solutionchallenge/home_detail/search/model/search_law_model.dart';
 import 'package:migrant_law_solutionchallenge/home_detail/search/screen/search_labor_detail_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:translator/translator.dart';
 
 import '../../const/api.dart';
