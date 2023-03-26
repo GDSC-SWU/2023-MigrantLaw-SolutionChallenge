@@ -39,11 +39,11 @@ class DownloadFileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 15.0),
+                  const SizedBox(height: 45.0),
                   Row(
                     children: const [
                       Text(
-                        " honey tip! ",
+                        "  honey tip! ",
                         style: TextStyle(
                           color: PRIMARY_COLOR,
                           fontSize: 30.0,
@@ -56,7 +56,7 @@ class DownloadFileScreen extends StatelessWidget {
                   Row(
                     children: const [
                       Text(
-                        " 노동자권리수첩 pdf ",
+                        "      노동자권리수첩 pdf ",
                         style: TextStyle(
                           color: PRIMARY_COLOR,
                           fontSize: 11.0,
@@ -115,7 +115,7 @@ class DownloadFileScreen extends StatelessWidget {
                   Row(
                     children: const [
                       Text(
-                        " 자주 물어보는 질문 Q&A ",
+                        "   자주 물어보는 질문 Q&A ",
                         style: TextStyle(
                           color: PRIMARY_COLOR,
                           fontSize: 17.0,
