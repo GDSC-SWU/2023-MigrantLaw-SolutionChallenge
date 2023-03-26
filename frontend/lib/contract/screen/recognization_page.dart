@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import '../../const/color.dart';
 import '../Utils/google_cloud_translation.dart';
 import '../Utils/translation_model.dart';
 
@@ -42,7 +43,13 @@ class _RecognizePageState extends State<RecognizePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("")),
+        appBar: AppBar(
+          elevation: 0,
+          centerTitle: false,
+          title: const Text(""),
+          foregroundColor: PRIMARY_COLOR,
+          backgroundColor: BODY_TEXT_COLOR,
+        ),
         body: _isBusy == true
             ? const Center(
           child: CircularProgressIndicator(),
@@ -53,22 +60,36 @@ class _RecognizePageState extends State<RecognizePage> {
           children: <Widget>[
             Expanded(
                 child: Container(
-                    width: MediaQuery.of(context).size.width * 0.95,
+                    width: MediaQuery.of(context).size.width,
                     child : SingleChildScrollView(
                       child : Column (
                         children: <Widget>[
-                          Text(
-                            'Initial text',
-                            style: Theme.of(context).textTheme.headline3,
-                          ),
+                          // Text(
+                          //   'Initial text',
+                          //   style: Theme.of(context).textTheme.headline3,
+                          // ),
+                          SizedBox(height: 30),
                           Text(controller.text),
                           SizedBox(height: 30),
-                          Text('Translated text', style: Theme.of(context).textTheme.headline3),
-                          Text(_translated.translatedText, style: TextStyle(color: Colors.blueAccent)),
-                          Text('Detected language - ${_translated.detectedSourceLanguage}', style: TextStyle(color: Colors.red)),
-                          const SizedBox(height: 20),
-                          Text('Language detected with detectLang, without translation - ${_detected.detectedSourceLanguage}',
-                              style: TextStyle(color: Colors.red)),
+                          Container(
+                            color: Color(0x82043F99),
+                            width: MediaQuery.of(context).size.width,
+                            child: Text(_translated.translatedText, style: TextStyle(color: Colors.white)),
+                            padding: EdgeInsets.all(20)
+                          ),
+                          Container(
+                            color: Color(0x82043F99),
+                            width: MediaQuery.of(context).size.width,
+                            child: Text('Detected language - ${_translated.detectedSourceLanguage}', style: TextStyle(color: Colors.black)),
+                            padding: EdgeInsets.only(top: 10, bottom: 150,left: 20,right: 20),
+                          ),
+                          // Container(
+                          //   color: Color(0x82043F99),
+                          //   width: MediaQuery.of(context).size.width,
+                          //   child: Text('Language detected with detectLang, without translation - ${_detected.detectedSourceLanguage}',
+                          //       style: TextStyle(color: Colors.black)),
+                          //   padding: EdgeInsets.only(top: 10, bottom: 100,left: 20,right: 20),
+                          // ),
                         ],
                       ),
                     )
