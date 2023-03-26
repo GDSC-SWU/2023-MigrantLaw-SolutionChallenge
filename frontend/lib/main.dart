@@ -4,7 +4,6 @@ import 'package:migrant_law_solutionchallenge/settings/language/start_language_s
 import 'package:shared_preferences/shared_preferences.dart';
 import 'const/api/translate/api_key.dart';
 import 'const/api/translate/translations.dart';
-import 'home/screen/navigation_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +48,7 @@ class _APPState extends State<_APP> {
         theme: ThemeData(
           fontFamily: "NotoSans",
         ),
-        home: const NavigationScreen(),
+        home: const StartLanguageScreen(),
       )
     );
   }

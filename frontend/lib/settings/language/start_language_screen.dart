@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
-import 'package:migrant_law_solutionchallenge/home/screen/home_sceen.dart';
+import '../../home/screen/navigation_screen.dart';
 import '../../home_detail/search/screen/search_labor_screen.dart';
 import '../../main.dart';
 
@@ -39,7 +39,7 @@ class _StartLanguageScreenState extends State<StartLanguageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 100.0),
+        padding: const EdgeInsets.only(top: 100,bottom: 0, left: 40, right: 40),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -47,7 +47,7 @@ class _StartLanguageScreenState extends State<StartLanguageScreen> {
               _header(),
               const SizedBox(height: 20.0),
               _Body(),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 20.0),
               const _bottom(),
             ],
           ),
@@ -70,7 +70,7 @@ class _header extends StatelessWidget {
           height: 90,
           fit: BoxFit.fill,
         ),
-        const SizedBox(height: 15.0),
+        const SizedBox(height: 14.0),
         const Text(
           "번역할 언어를 선택해 주세요",
           style: textStyle,
@@ -177,11 +177,13 @@ class _LanguageCardState extends State<LanguageCard> {
           onTap: () async {
             setState(() {
               selectedIndex = widget.page;
-              chooseLanguage = languageCode[selectedIndex];
+
               RestartWidget.restartApp(context);
+
               translation.saveData(languageCode[selectedIndex]);
               translation.loadData();
-              getLanguage = languageCode[selectedIndex];
+
+              chooseLanguage = getLanguage = getNavLanguage = languageCode[selectedIndex];
             });
           },
         ),
@@ -201,7 +203,7 @@ class _bottom extends StatelessWidget {
         onPressed: () {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => HomeScreen()),
+            MaterialPageRoute(builder: (context) => const NavigationScreen()),
             (Route<dynamic> route) => false,
           );
         },
