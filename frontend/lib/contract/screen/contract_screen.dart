@@ -1,7 +1,13 @@
-import 'package:camera/camera.dart';
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../const/color.dart';
-import 'camera_page.dart';
+import '../Utils/image_cropper_page.dart';
+import '../Utils/image_picker_class.dart';
+import '../screen/recognization_page.dart';
+
 
 class ContractSceen extends StatelessWidget {
   const ContractSceen({Key? key}) : super(key: key);
@@ -77,7 +83,23 @@ class _Body extends StatelessWidget {
           child: InkWell(
             splashColor: SECONDARY_COLOR1.withAlpha(30),
             onTap: () {
-              debugPrint('업로드 tapped.');
+              log("Gallery");
+              pickImage(source: ImageSource.gallery).then((value) {
+                if (value != '') {
+                  imageCropperView(value, context).then((value) {
+                    if (value != '') {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (_) => RecognizePage(
+                            path: value,
+                          ),
+                        ),
+                      );
+                    }
+                  });
+                }
+              });
             },
             child: const SizedBox(
               width: 230,
@@ -104,8 +126,25 @@ class _Body extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: ElevatedButton(
             onPressed: () async {
-              await availableCameras().then((value) => Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => CameraPage(cameras: value))));
+              log("Camera");
+              pickImage(source: ImageSource.camera).then((value) {
+                if (value != '') {
+                  imageCropperView(value, context).then((value) {
+                    if (value != '') {
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (_) => RecognizePage(
+                            path: value,
+                          ),
+                        ),
+                      );
+                    }
+                  });
+                }
+              });
+              // await availableCameras().then((value) => Navigator.push(context,
+              //     MaterialPageRoute(builder: (_) => CameraPage(cameras: value))));
             },
             // InkWell(
             //   splashColor: SECONDARY_COLOR1.withAlpha(30),
