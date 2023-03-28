@@ -94,6 +94,9 @@ flutter:
     - assets/images/country/vietnam.jpeg
     - assets/images/country/USA.jpg
     - assets/note_ko.pdf
+    - assets/note_vn.pdf
+    - assets/note_en.pdf
+    - assets/note_cn.pdf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
