@@ -49,6 +49,10 @@ dependencies:
   html_unescape: ^2.0.0
   flutter_pdfview: ^1.2.9
   path_provider: ^2.0.14
+  firebase_core: ^2.8.0
+  firebase_storage: ^11.0.16
+  firebase_core_platform_interface: ^4.5.3
+#  flutter_plugin_pdf_viewer: ^1.0.7
 
 
 dev_dependencies:
@@ -89,6 +93,7 @@ flutter:
     - assets/images/country/uzbekistan.png
     - assets/images/country/vietnam.jpeg
     - assets/images/country/USA.jpg
+    - assets/note_ko.pdf
 
   # To add assets to your application, add an assets section, like this:
   # assets:

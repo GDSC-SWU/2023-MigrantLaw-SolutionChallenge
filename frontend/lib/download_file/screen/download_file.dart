@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import '../../main.dart';
+import '../api/pdf_api.dart';
 import 'pdfViewerPage_ko.dart';
 
 class DownloadFileScreen extends StatelessWidget {
@@ -270,6 +273,8 @@ class DownloadFileScreen extends StatelessWidget {
 class _Body extends StatelessWidget {
   _Body({Key? key}) : super(key: key);
 
+  static final String title = 'PDF Viewer';
+
   // 텍스트 스타일
   final textStyle = const TextStyle(
     color: Colors.black87,
@@ -297,9 +302,9 @@ class _Body extends StatelessWidget {
   int currentIndex = 0;
 
   final List<Widget> _navigationList = <Widget> [
-    const PdfViewerPage_ko (),
-    const PdfViewerPage_ko(),
-    const PdfViewerPage_ko(),
+    // const PdfViewerPage_ko (),
+    // const PdfViewerPage_ko(),
+    // const PdfViewerPage_ko(),
   ];
 
   @override
@@ -333,12 +338,19 @@ class _Body extends StatelessWidget {
                     color: Colors.white24,
                     clipBehavior: Clip.hardEdge,
                     child: InkWell(
-                      onTap: () {
+                      onTap: () async {
                         debugPrint('pdf 출ㄹ력.');
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (BuildContext context) {
-                              return _navigationList[index];
-                            }));
+                        // Navigator.of(context).push(
+                        //     MaterialPageRoute(builder: (BuildContext context) {
+                        //       return _navigationList[index];
+                        //     }));
+                        // final url = 'note_ko.pdf';
+                        // final file = await PDFApi.loadFirebase(url);
+                        // if (file == null) return debugPrint('pnnnnn.');
+                        // openPDF(context, file);
+                        final path = 'assets/note_ko.pdf';
+                        final file = await PDFApi.loadAsset(path);
+                        openPDF(context, file);
                       },
                       child: const SizedBox(
                         width: 196,
@@ -355,4 +367,8 @@ class _Body extends StatelessWidget {
       ),
     );
   }
+  void openPDF(BuildContext context, File file) => Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
+  );
 }
+
