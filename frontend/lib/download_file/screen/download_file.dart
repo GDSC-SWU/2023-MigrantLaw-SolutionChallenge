@@ -4,6 +4,7 @@ import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import '../../main.dart';
+import 'pdfViewerPage_ko.dart';
 
 class DownloadFileScreen extends StatelessWidget {
   const DownloadFileScreen({Key? key}) : super(key: key);
@@ -59,56 +60,64 @@ class DownloadFileScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5.0),
-                  Row(
+                  // Row(
+                  //   children: [
+                  //     const Text(
+                  //       "      노동자권리수첩 pdf ",
+                  //       style: TextStyle(
+                  //         color: PRIMARY_COLOR,
+                  //         fontSize: 13.0,
+                  //         fontWeight: FontWeight.w400,
+                  //       ),
+                  //     ).translate(),
+                  //   ],
+                  // ),
+                  // const SizedBox(height: 3.0),
+                  Stack(
                     children: [
-                      const Text(
-                        "      노동자권리수첩 pdf ",
-                        style: TextStyle(
-                          color: PRIMARY_COLOR,
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ).translate(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 23),
+                        child: _Body(),
+                      ),
                     ],
                   ),
-                  const SizedBox(height: 3.0),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        Card(
-                          color: Colors.white24,
-                          clipBehavior: Clip.hardEdge,
-                          child: InkWell(
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              debugPrint('Card1 tapped.');
-                            },
-                            child: const SizedBox(
-                              width: 196,
-                              height: 128,
-                              child: Text(''),
-                            ),
-                          ),
-                        ),
-                        Card(
-                          color: Colors.white24,
-                          clipBehavior: Clip.hardEdge,
-                          child: InkWell(
-                            splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
-                              debugPrint('Card2 tapped.');
-                            },
-                            child: const SizedBox(
-                              width: 196,
-                              height: 128,
-                              child: Text(""),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                  // SingleChildScrollView(
+                  //   scrollDirection: Axis.horizontal,
+                  //   child: Row(
+                  //     children: [
+                  //       Card(
+                  //         color: Colors.white24,
+                  //         clipBehavior: Clip.hardEdge,
+                  //         child: InkWell(
+                  //           splashColor: Colors.blue.withAlpha(30),
+                  //           onTap: () {
+                  //             debugPrint('Card1 tapped.');
+                  //           },
+                  //           child: const SizedBox(
+                  //             width: 196,
+                  //             height: 128,
+                  //             child: Text(''),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Card(
+                  //         color: Colors.white24,
+                  //         clipBehavior: Clip.hardEdge,
+                  //         child: InkWell(
+                  //           splashColor: Colors.blue.withAlpha(30),
+                  //           onTap: () {
+                  //             debugPrint('Card2 tapped.');
+                  //           },
+                  //           child: const SizedBox(
+                  //             width: 196,
+                  //             height: 128,
+                  //             child: Text(""),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // )
                 ],
               ),
             ),
@@ -253,6 +262,96 @@ class DownloadFileScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  _Body({Key? key}) : super(key: key);
+
+  // 텍스트 스타일
+  final textStyle = const TextStyle(
+    color: Colors.black87,
+    fontSize: 12.5,
+    fontWeight: FontWeight.w700,
+  );
+
+  final cardNameList = <String>[
+    '한국어',
+    '영어',
+    '베트남',
+    '중국어',
+  ];
+
+  final imgList = <String>[
+    'labor_standards.png',
+    'employment_insurance.png',
+    'safety_insurance.png',
+    'retirement.png',
+    'wage_claim.png',
+    'equality.png',
+  ];
+
+  // 네비게이션
+  int currentIndex = 0;
+
+  final List<Widget> _navigationList = <Widget> [
+    const PdfViewerPage_ko (),
+    const PdfViewerPage_ko(),
+    const PdfViewerPage_ko(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 27.0, top: 7.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              const Text(
+                " 자주 찾아 보는 법률 ",
+                style: TextStyle(
+                  color: PRIMARY_COLOR,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w800,
+                ),
+              ).translate(),
+            ],
+          ),
+          const SizedBox(height: 14.0),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(
+                4,
+                    (index) {
+                  return Card(
+                    color: Colors.white24,
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      onTap: () {
+                        debugPrint('pdf 출ㄹ력.');
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (BuildContext context) {
+                              return _navigationList[index];
+                            }));
+                      },
+                      child: const SizedBox(
+                        width: 196,
+                        height: 128,
+                        child: Text(''),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
