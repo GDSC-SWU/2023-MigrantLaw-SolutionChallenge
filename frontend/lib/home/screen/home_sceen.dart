@@ -210,7 +210,7 @@ class _Bottom extends StatelessWidget {
           Row(
             children: [
               const Text(
-                " 자주 찾아 보는 법률 ",
+                " 외국인노동자 지원센터 ",
                 style: TextStyle(
                   color: PRIMARY_COLOR,
                   fontSize: 20.0,
@@ -220,39 +220,53 @@ class _Bottom extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 14.0),
+
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 Card(
-                  color: Colors.white24,
+                  color: SECONDARY_COLOR4,
                   clipBehavior: Clip.hardEdge,
-                  child: InkWell(
-                    splashColor: Colors.blue.withAlpha(30),
-                    onTap: () {
-                      debugPrint('Card1 tapped.');
-                    },
-                    child: const SizedBox(
-                      width: 196,
-                      height: 128,
-                      child: Text(''),
+                  child: Container(
+                    height: 128,
+                    width: 196,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            " 거점센터 \n (9개소) ",
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ).translate(),
+                          ],
                     ),
                   ),
                 ),
                 Card(
-                  color: Colors.white24,
+                  color: SECONDARY_COLOR4,
                   clipBehavior: Clip.hardEdge,
-                  child: InkWell(
-                    splashColor: Colors.blue.withAlpha(30),
-                    onTap: () {
-                      debugPrint('Card2 tapped.');
-                    },
-                    child: const SizedBox(
-                      width: 196,
-                      height: 128,
-                      child: Text(""),
+                  child: Container(
+                    height: 128,
+                    width: 196,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          " 소지역센터 \n (35개소) ",
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ).translate(),
+                      ],
                     ),
                   ),
+
                 ),
               ],
             ),

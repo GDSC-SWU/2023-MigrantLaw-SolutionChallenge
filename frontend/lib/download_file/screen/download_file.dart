@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
 
 import '../../main.dart';
+import '../api/pdf_api.dart';
+import 'pdfViewerPage_ko.dart';
 
 class DownloadFileScreen extends StatelessWidget {
   const DownloadFileScreen({Key? key}) : super(key: key);
@@ -31,7 +35,7 @@ class DownloadFileScreen extends StatelessWidget {
             child: Text(
               "Lawpedia",
               style: TextStyle(
-                fontSize: 23.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -45,7 +49,7 @@ class DownloadFileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 45.0),
+                  const SizedBox(height: 50.0),
                   Row(
                     children: [
                       const Text(
@@ -81,13 +85,23 @@ class DownloadFileScreen extends StatelessWidget {
                           clipBehavior: Clip.hardEdge,
                           child: InkWell(
                             splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
+                            onTap: () async {
                               debugPrint('Card1 tapped.');
+                              // debugPrint('pdf 출력.');
+                              final path = 'assets/note_ko.pdf';
+                              final file = await PDFApi.loadAsset(path);
+                              openPDF(context, file);
                             },
-                            child: const SizedBox(
-                              width: 196,
-                              height: 128,
-                              child: Text(''),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/pdf_ko.png',
+                                  height: 125.0,
+                                  width: 196,
+                                  fit: BoxFit.cover,
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -96,13 +110,70 @@ class DownloadFileScreen extends StatelessWidget {
                           clipBehavior: Clip.hardEdge,
                           child: InkWell(
                             splashColor: Colors.blue.withAlpha(30),
-                            onTap: () {
+                            onTap: () async {
                               debugPrint('Card2 tapped.');
+                              final path = 'assets/note_en.pdf';
+                              final file = await PDFApi.loadAsset(path);
+                              openPDF(context, file);
                             },
-                            child: const SizedBox(
-                              width: 196,
-                              height: 128,
-                              child: Text(""),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/pdf_en.png',
+                                  height: 125.0,
+                                  width: 196,
+                                  fit: BoxFit.cover,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          color: Colors.white24,
+                          clipBehavior: Clip.hardEdge,
+                          child: InkWell(
+                            splashColor: Colors.blue.withAlpha(30),
+                            onTap: () async {
+                              debugPrint('Card3 tapped.');
+                              final path = 'assets/note_cn.pdf';
+                              final file = await PDFApi.loadAsset(path);
+                              openPDF(context, file);
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/pdf_cn.png',
+                                  height: 125.0,
+                                  width: 196,
+                                  fit: BoxFit.cover,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          color: Colors.white24,
+                          clipBehavior: Clip.hardEdge,
+                          child: InkWell(
+                            splashColor: Colors.blue.withAlpha(30),
+                            onTap: () async {
+                              debugPrint('Card4 tapped.');
+                              final path = 'assets/note_vn.pdf';
+                              final file = await PDFApi.loadAsset(path);
+                              openPDF(context, file);
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/images/pdf_vn.png',
+                                  height: 125.0,
+                                  width: 196,
+                                  fit: BoxFit.cover,
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -117,7 +188,7 @@ class DownloadFileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 40.0),
+                  const SizedBox(height: 43.0),
                   Row(
                     children: [
                       const Text(
@@ -256,4 +327,8 @@ class DownloadFileScreen extends StatelessWidget {
       ),
     );
   }
+  void openPDF(BuildContext context, File file) => Navigator.of(context).push(
+    MaterialPageRoute(builder: (context) => PDFViewerPage(file: file)),
+  );
 }
+

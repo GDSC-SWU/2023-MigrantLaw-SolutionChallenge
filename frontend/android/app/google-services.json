@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "972304691068",
+    "project_id": "text-30f1e",
+    "storage_bucket": "text-30f1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972304691068:android:2ff064a04e7bf17f523ef9",
+        "android_client_info": {
+          "package_name": "com.example.migrant_law_solutionchallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972304691068-odetfvjhf01im464do5ok22df28ohnfe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtr1Dpi_gXKAhbjaVTjLqUB-24-4xbTVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972304691068-odetfvjhf01im464do5ok22df28ohnfe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

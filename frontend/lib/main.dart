@@ -7,6 +7,7 @@ import 'const/api/translate/translations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
   runApp(
     const RestartWidget(child: _APP()),
   );
