@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model law {
+   lawId                BigInt    @id @default(autoincrement())
+   category             String    @db.VarChar(50)
+   jomun                String    @db.VarChar(10000)
+}
+
+model lawJson {
+   lawId                BigInt    @id @default(autoincrement())
+   category             String    @db.VarChar(50)
+   jomunKey             Json?
+   jomunTitle           Json?
+   jomunStartDay        Json?
+   jomunContent         Json?
+   jomunReference       Json?
+   hang                 Json?
+}
