@@ -35,7 +35,7 @@ class DownloadFileScreen extends StatelessWidget {
             child: Text(
               "Lawpedia",
               style: TextStyle(
-                fontSize: 23.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.w800,
               ),
             ),
@@ -49,7 +49,7 @@ class DownloadFileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 45.0),
+                  const SizedBox(height: 50.0),
                   Row(
                     children: [
                       const Text(
@@ -97,7 +97,7 @@ class DownloadFileScreen extends StatelessWidget {
                               children: [
                                 Image.asset(
                                   'assets/images/pdf_ko.png',
-                                  height: 128.0,
+                                  height: 125.0,
                                   width: 196,
                                   fit: BoxFit.cover,
                                 ),
@@ -121,7 +121,7 @@ class DownloadFileScreen extends StatelessWidget {
                               children: [
                                 Image.asset(
                                   'assets/images/pdf_en.png',
-                                  height: 128.0,
+                                  height: 125.0,
                                   width: 196,
                                   fit: BoxFit.cover,
                                 ),
@@ -145,7 +145,7 @@ class DownloadFileScreen extends StatelessWidget {
                               children: [
                                 Image.asset(
                                   'assets/images/pdf_cn.png',
-                                  height: 128.0,
+                                  height: 125.0,
                                   width: 196,
                                   fit: BoxFit.cover,
                                 ),
@@ -169,7 +169,7 @@ class DownloadFileScreen extends StatelessWidget {
                               children: [
                                 Image.asset(
                                   'assets/images/pdf_vn.png',
-                                  height: 128.0,
+                                  height: 125.0,
                                   width: 196,
                                   fit: BoxFit.cover,
                                 ),
@@ -188,7 +188,7 @@ class DownloadFileScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 40.0),
+                  const SizedBox(height: 43.0),
                   Row(
                     children: [
                       const Text(
