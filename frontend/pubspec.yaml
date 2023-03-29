@@ -97,6 +97,10 @@ flutter:
     - assets/note_vn.pdf
     - assets/note_en.pdf
     - assets/note_cn.pdf
+    - assets/images/pdf_cn.png
+    - assets/images/pdf_ko.png
+    - assets/images/pdf_vn.png
+    - assets/images/pdf_en.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
