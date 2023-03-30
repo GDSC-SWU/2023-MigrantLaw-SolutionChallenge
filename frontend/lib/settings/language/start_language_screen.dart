@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_translator/google_translator.dart';
 import 'package:migrant_law_solutionchallenge/const/api/translate/translations.dart';
 import 'package:migrant_law_solutionchallenge/const/color.dart';
+import '../../contract/screen/recognization_page.dart';
 import '../../home/screen/navigation_screen.dart';
 import '../../home_detail/search/screen/search_labor_screen.dart';
 import '../../main.dart';
@@ -183,7 +184,7 @@ class _LanguageCardState extends State<LanguageCard> {
               translation.saveData(languageCode[selectedIndex]);
               translation.loadData();
 
-              chooseLanguage = getLanguage = getNavLanguage = languageCode[selectedIndex];
+              chooseLanguage = getLanguage = getNavLanguage = getContractLanguage = languageCode[selectedIndex];
             });
           },
         ),

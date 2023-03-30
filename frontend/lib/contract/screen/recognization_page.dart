@@ -6,6 +6,8 @@ import '../../const/color.dart';
 import '../Utils/google_cloud_translation.dart';
 import '../Utils/translation_model.dart';
 
+String getContractLanguage = "ko";
+
 class RecognizePage extends StatefulWidget {
   final String? path;
   const RecognizePage({Key? key, this.path}) : super(key: key);
@@ -64,32 +66,21 @@ class _RecognizePageState extends State<RecognizePage> {
                     child : SingleChildScrollView(
                       child : Column (
                         children: <Widget>[
-                          // Text(
-                          //   'Initial text',
-                          //   style: Theme.of(context).textTheme.headline3,
-                          // ),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           Text(controller.text),
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           Container(
-                            color: Color(0x82043F99),
+                            color: const Color(0x82043F99),
                             width: MediaQuery.of(context).size.width,
-                            child: Text(_translated.translatedText, style: TextStyle(color: Colors.white)),
-                            padding: EdgeInsets.all(20)
+                            padding: const EdgeInsets.all(20),
+                            child: Text(_translated.translatedText, style: const TextStyle(color: Colors.white))
                           ),
                           Container(
-                            color: Color(0x82043F99),
+                            color: const Color(0x82043F99),
                             width: MediaQuery.of(context).size.width,
-                            child: Text('Detected language - ${_translated.detectedSourceLanguage}', style: TextStyle(color: Colors.black)),
-                            padding: EdgeInsets.only(top: 10, bottom: 150,left: 20,right: 20),
+                            padding: const EdgeInsets.only(top: 10, bottom: 150,left: 20,right: 20),
+                            child: Text('Detected language - ${_translated.detectedSourceLanguage}', style: const TextStyle(color: Colors.black)),
                           ),
-                          // Container(
-                          //   color: Color(0x82043F99),
-                          //   width: MediaQuery.of(context).size.width,
-                          //   child: Text('Language detected with detectLang, without translation - ${_detected.detectedSourceLanguage}',
-                          //       style: TextStyle(color: Colors.black)),
-                          //   padding: EdgeInsets.only(top: 10, bottom: 100,left: 20,right: 20),
-                          // ),
                         ],
                       ),
                     )
@@ -101,12 +92,12 @@ class _RecognizePageState extends State<RecognizePage> {
       // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          _translated = await _translation.translate(text: controller.text, to: 'en');
+          _translated = await _translation.translate(text: controller.text, to: getContractLanguage);
           _detected = await _translation.detectLang(text: controller.text);
           setState(() {});
         },
         tooltip: 'Translate',
-        child: Icon(Icons.language),
+        child: const Icon(Icons.language),
       ),
     );
   }
