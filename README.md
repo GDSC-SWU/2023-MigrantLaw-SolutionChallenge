@@ -1,4 +1,4 @@
-# 2023 Solution Challenge - LawPedia
+# 2023 Solution Challenge - LawPedia 👩‍⚖️
 
 <img width="900" src="https://user-images.githubusercontent.com/87655596/229182085-792e421b-4294-442d-a584-f12789de784f.png"/>
 
