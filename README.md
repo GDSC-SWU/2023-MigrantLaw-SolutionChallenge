@@ -32,7 +32,7 @@ Workers' rights must be protected worldwide. Therefore, this app was developed t
 ※ This app only works on Android OS.
 
 <img width="900" src="https://user-images.githubusercontent.com/87655596/229190035-72dc0d88-af47-4108-a49c-92e4384638b6.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189194-d88db7e2-5328-44b9-99e9-ff045310a14f.png"/>
+<img width="900" src="https://user-images.githubusercontent.com/87655596/229195517-c52da6da-84b4-4431-bc5e-671b566beca8.png"/>
 <img width="900" src="https://user-images.githubusercontent.com/87655596/229189269-9da34d8a-1444-460e-b03a-3094001d3506.png"/>
 <img width="900" src="https://user-images.githubusercontent.com/87655596/229189339-0d91deab-922c-4342-b5c3-b2cc60a681bf.png"/>
 <img width="900" src="https://user-images.githubusercontent.com/87655596/229189462-2afcfda1-6ebf-47b8-91c6-86fadb5ff14b.png"/>
