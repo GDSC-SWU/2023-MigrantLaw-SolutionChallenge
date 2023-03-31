@@ -31,15 +31,15 @@ Workers' rights must be protected worldwide. Therefore, this app was developed t
 
 ※ This app only works on Android OS.
 
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229190035-72dc0d88-af47-4108-a49c-92e4384638b6.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229195517-c52da6da-84b4-4431-bc5e-671b566beca8.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189269-9da34d8a-1444-460e-b03a-3094001d3506.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189339-0d91deab-922c-4342-b5c3-b2cc60a681bf.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189462-2afcfda1-6ebf-47b8-91c6-86fadb5ff14b.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189509-0de10f10-a3ef-4b98-a1a8-dd8868602c93.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189508-35bd1aa4-740f-4166-9729-c63d16d7ee67.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189494-10b63f53-d221-4cae-9de6-ca82aaa7029d.png"/>
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229189484-3cef5452-0982-4c37-b940-9179a106e89b.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229190035-72dc0d88-af47-4108-a49c-92e4384638b6.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229195517-c52da6da-84b4-4431-bc5e-671b566beca8.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229189269-9da34d8a-1444-460e-b03a-3094001d3506.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229189339-0d91deab-922c-4342-b5c3-b2cc60a681bf.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229189462-2afcfda1-6ebf-47b8-91c6-86fadb5ff14b.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229189509-0de10f10-a3ef-4b98-a1a8-dd8868602c93.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229189508-35bd1aa4-740f-4166-9729-c63d16d7ee67.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229189494-10b63f53-d221-4cae-9de6-ca82aaa7029d.png"/>
+<img width="1000" src="https://user-images.githubusercontent.com/87655596/229189484-3cef5452-0982-4c37-b940-9179a106e89b.png"/>
 
 
 ## 👩🏻‍💻 Contributors
