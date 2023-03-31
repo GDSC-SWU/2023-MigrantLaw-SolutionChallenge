@@ -1,6 +1,5 @@
 # 2023 Solution Challenge - LawPedia
 
-
 <img width="900" src="https://user-images.githubusercontent.com/87655596/229182085-792e421b-4294-442d-a584-f12789de784f.png"/>
 
 
@@ -16,7 +15,7 @@ With these features, our apps have the potential to help us regain the right to 
 
 
 ## 📌 Our Goal
-<img width="600" src="https://user-images.githubusercontent.com/87655596/229187428-de9fc3c4-d9c8-4ddc-9547-f1cb30b228ff.png"/>
+<img width="600" src="https://user-images.githubusercontent.com/87655596/229194586-73d7eb5a-7ba4-42f4-8c3f-112f61a685b0.png"/>
 We became interested in the poor working environment and inequality of migrant workers after reading an article about 6,700 migrant workers killed in the last 10 years in Qatar, the host country of the 2022 World Cup.
 Workers' rights must be protected worldwide. Therefore, this app was developed to help guarantee the rights of migrant workers who are in need of better treatment.
 
