@@ -46,4 +46,4 @@ Workers' rights must be protected worldwide. Therefore, this app was developed t
 |Name|Nayeon Sung|JeongAh Mok|Minyoung Kim|
 |------|---|---|---|
 |Role|Front-end Developer|Front-end Developer|Back-end Developer|
-|Profile|<img width="200" src="https://user-images.githubusercontent.com/87655596/229192058-54ab9799-47a2-4128-bea4-48c40282c135.jpeg"/>|<img width="200" src="https://user-images.githubusercontent.com/87655596/229265909-a3d0ed67-7b89-4c57-a58d-1497b3d9d27f.jpg"/>|<img width="200" src="https://user-images.githubusercontent.com/87655596/229192487-62433fa0-6cd3-4ed4-8596-8bc29ecc216d.jpg"/>|
+|Profile|<img width="200" src="https://user-images.githubusercontent.com/87655596/229192058-54ab9799-47a2-4128-bea4-48c40282c135.jpeg"/>|<img width="200" src="https://user-images.githubusercontent.com/87655596/229266555-e5393d56-9785-4866-8d52-e6653f4978da.JPG"/>|<img width="200" src="https://user-images.githubusercontent.com/87655596/229192487-62433fa0-6cd3-4ed4-8596-8bc29ecc216d.jpg"/>|
