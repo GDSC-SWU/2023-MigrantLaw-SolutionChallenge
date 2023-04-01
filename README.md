@@ -1,7 +1,6 @@
 # 2023 Solution Challenge - LawPedia 👩‍⚖️
 
-<img width="900" src="https://user-images.githubusercontent.com/87655596/229182085-792e421b-4294-442d-a584-f12789de784f.png"/>
-
+<img width="900" src="https://user-images.githubusercontent.com/87655596/229266352-28b85175-bb01-4db1-bdf5-58c07f0920d7.png"/>
 
 ## 📢 Project Introduction
 
