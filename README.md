@@ -24,7 +24,7 @@ Workers' rights must be protected worldwide. Therefore, this app was developed t
 
 
 ## 📹 Demo 
-
+[![Video Label](https://user-images.githubusercontent.com/87655596/229719190-ce0dc53b-95e1-4890-b811-cd798b25b8c6.png)](https://www.youtube.com/watch?v=SksAXWE0Inw)
 
 ## ❓How to use 
 
